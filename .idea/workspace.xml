@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3da3d773-a7fd-46aa-9cd8-f8380151bcb0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../html5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../html5/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-mvc-php/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Controller/home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Model/Entity/Database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Model/Entity/Secteur.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Model/Entity/Structure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Model/Repository/DAO.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Model/Repository/SecteurDAO.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/Model/Repository/StructureDAO.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/img/ajzija.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/img/fond.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/img/fond.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/View/js/jquery-3.4.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-php/test.php" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1T9k3vGWOyTJPgOb986T5QvTfQn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3da3d773-a7fd-46aa-9cd8-f8380151bcb0" name="Default Changelist" comment="" />
+      <created>1572879502284</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572879502284</updated>
+      <workItem from="1572879503530" duration="3474000" />
+      <workItem from="1572938240955" duration="6359000" />
+      <workItem from="1573111583894" duration="7662000" />
+      <workItem from="1573134060615" duration="6000" />
+      <workItem from="1574151056147" duration="2652000" />
+      <workItem from="1574166442022" duration="334000" />
+      <workItem from="1574168945577" duration="364000" />
+      <workItem from="1575633117189" duration="1304000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
