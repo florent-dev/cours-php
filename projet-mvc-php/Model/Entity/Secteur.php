@@ -2,7 +2,9 @@
 
 namespace Model\Entity;
 
-class Secteur {
+use mvc\model\entities\Entity;
+
+class Secteur extends Entity {
 
     private $_int;
     private $_nom;

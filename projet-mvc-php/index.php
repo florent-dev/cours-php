@@ -1,5 +1,6 @@
 <?php
 require_once("./Controller/HomeController.php");
+
 try {
     if (isset($_GET["action"])) {
         if (stripos($_GET["action"], "Accueil")) {

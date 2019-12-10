@@ -3,29 +3,29 @@
 namespace Model\Entity;
 
 
-class Structure {
+use mvc\model\entities\Entity;
 
-    private $_int;
+class Structure extends Entity {
+
+    private $_id;
     private $_nom;
     private $_rue;
     private $_cp;
     private $_ville;
     private $_estAssocie;
-    private $_nbDonnateurs;
+    private $_nbDonateurs;
     private $_nbActionnaires;
-    private $_secteur;
 
     //Controleur
-    public function __construct($int,$nom,$rue,$cp,$ville,$estAssocie,$nbDonnateurs,$nbActionnaires,$secteur) {
-        $this->_int=$int;
+    public function __construct($id,$nom,$rue,$cp,$ville,$estAssocie,$nbDonateurs,$nbActionnaires) {
+        $this->_id=$id;
         $this->_nom=$nom;
         $this->_rue=$rue;
         $this->_cp=$cp;
         $this->_ville=$ville;
         $this->_estAssocie=$estAssocie;
-        $this->_nbDonnateurs=$nbDonnateurs;
+        $this->_nbDonateurs=$nbDonateurs;
         $this->_nbActionnaires=$nbActionnaires;
-        $this->_secteur=$secteur;
     }
 
     //Getteurs
@@ -64,9 +64,9 @@ class Structure {
     /**
      * @return mixed
      */
-    public function getNbDonnateurs()
+    public function getNbDonateurs()
     {
-        return $this->_nbDonnateurs;
+        return $this->_nbDonateurs;
     }
 
     /**
@@ -80,9 +80,9 @@ class Structure {
     /**
      * @return mixed
      */
-    public function getInt()
+    public function getId()
     {
-        return $this->_int;
+        return $this->_id;
     }
 
     /**
@@ -111,14 +111,6 @@ class Structure {
     }
 
     /**
-     * @param mixed $secteur
-     */
-    public function setSecteur($secteur)
-    {
-        $this->_secteur = $secteur;
-    }
-
-    /**
      * @param mixed $rue
      */
     public function setRue($rue)
@@ -137,9 +129,9 @@ class Structure {
     /**
      * @param mixed $nbDonnateurs
      */
-    public function setNbDonnateurs($nbDonnateurs)
+    public function setNbDonateurs($nbDonnateurs)
     {
-        $this->_nbDonnateurs = $nbDonnateurs;
+        $this->_nbDonateurs = $nbDonnateurs;
     }
 
     /**
@@ -153,9 +145,9 @@ class Structure {
     /**
      * @param mixed $int
      */
-    public function setInt($int)
+    public function setId($int)
     {
-        $this->_int = $int;
+        $this->_id = $int;
     }
 
     /**
