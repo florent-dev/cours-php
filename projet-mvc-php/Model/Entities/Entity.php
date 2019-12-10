@@ -1,7 +1,7 @@
 <?php
 
 
-namespace mvc\model\entities;
+namespace mvc\Model\Entities;
 
 class Entity
 {

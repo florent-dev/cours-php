@@ -2,12 +2,11 @@
 
 namespace mvc\Controller;
 
-use Model\Entity\Secteur;
-use Model\Entity\Structure;
-use mvc\model\manager\StructureManager;
+use Model\Entities\Secteur;
+use mvc\Model\Manager\StructureManager;
 
-require_once('SController.php.php');
-require_once(__DIR__ . '/../Model/Manager/StructureManager.php.php');
+require_once('SController.php');
+require_once(__DIR__ . '/../Model/Manager/StructureManager.php');
 
 
 
@@ -21,17 +20,17 @@ class SecteurController extends SController
     public function viewSecteurs() : void
     {
         $title = "Liste des secteurs";
-        $structures = $this->findAll();
+        $secteurs = $this->findAll();
 
-        require(__DIR__ . '/../view/viewSecteurs.php.php');
+        require(__DIR__ . '/../View/viewSecteurs.php');
     }
 
-    public function viewStructure($id) : void
+    public function viewSecteur($id) : void
     {
         $title = "Détail du secteur";
-        $account = $this->findById($id);
+        $secteur = $this->findById($id);
 
-        require(__DIR__ . '/../view/viewSecteur.php');
+        require(__DIR__ . '/../View/viewSecteur.php');
     }
 
     public function addSecteur() : void

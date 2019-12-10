@@ -1,13 +1,12 @@
 <?php
 
-namespace mvc\model\manager;
+namespace mvc\Model\Manager;
 
-require_once(__DIR__ . '/../Entity/Secteur.php');
-require_once(__DIR__.'/../entities/Entity.php');
+require_once(__DIR__ . '/../Entities/Secteur.php');
+require_once(__DIR__.'/../entities/Entities.php');
 require_once('PDOManager.php');
 
-use Model\Entity\Secteur;
-use mvc\model\entities\Authorization;
+use mvc\Model\Entities\Secteur;
 use mvc\model\entities\Entity;
 use \PDOStatement;
 

@@ -8,8 +8,8 @@
 <?php
 //var_dump($accounts);
 foreach ($secteurs as $secteur) { ?>
-    <form method="post" action="index.php?action=viewSecteur&id=<?= $secteurs->getId()?>">
-        <label><?= $secteurs->getNom(); ?></label>
+    <form method="post" action="index.php?action=viewSecteur&id=<?= $secteur->getId()?>">
+        <label><?= $secteur->getNom(); ?></label>
         <input type="submit" name="viewSecteur" value="Détails">
     </form>
 <?php

@@ -1,10 +1,10 @@
 <?php
 namespace mvc\Controller;
 
-require_once(__DIR__.'/../model/managers/PDOManager.php');
+require_once(__DIR__.'/../Model/Manager/PDOManager.php');
 
-use mvc\model\entities\Entity;
-use mvc\model\manager\PDOManager;
+use mvc\Model\Entities\Entity;
+use mvc\Model\Manager\PDOManager;
 use \PDOStatement;
 use \PDO;
 

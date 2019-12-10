@@ -1,15 +1,15 @@
 <?php
 
-namespace mvc\model\manager;
+namespace mvc\Model\Manager;
 
 require_once('PDOManager.php');
 
-require_once(__DIR__ . '/../entities/Structure.php');
-require_once(__DIR__.'/../entities/Entity.php');
+require_once(__DIR__ . '/../Entities/Structure.php');
+require_once(__DIR__ . '/../Entities/Entity.php');
 require_once('PDOManager.php');
 
-use Model\Entity\Structure;
-use mvc\model\entities\Entity;
+use Model\Entities\Structure;
+use mvc\Model\Entities\Entity;
 use \PDOStatement;
 
 class StructureManager extends PDOManager

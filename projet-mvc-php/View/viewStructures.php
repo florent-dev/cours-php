@@ -9,7 +9,7 @@
 //var_dump($accounts);
 foreach ($structures as $structure) { ?>
     <form method="post" action="index.php?action=viewStructure&id=<?= $structure->getId()?>">
-        <label><?= $structure->getName(); ?></label>
+        <label><?= $structure->getNom(); ?></label>
         <input type="submit" name="viewAccount" value="Détails"/>
     </form>
 <?php

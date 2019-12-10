@@ -1,9 +1,10 @@
 <?php
 
-namespace Model\Entity;
+namespace Model\Entities;
 
+require_once('Entity.php');
 
-use mvc\model\entities\Entity;
+use mvc\Model\Entities\Entity;
 
 class Structure extends Entity {
 

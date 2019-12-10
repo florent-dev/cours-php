@@ -1,6 +1,6 @@
 <?php
 
-namespace mvc\model\manager;
+namespace mvc\Model\Manager;
 
 require_once(__DIR__.'/../../conf/config.php');
 

@@ -2,7 +2,9 @@
 
 namespace Model\Entity;
 
-use mvc\model\entities\Entity;
+require_once('Entity.php');
+
+use mvc\Model\Entities\Entity;
 
 class Secteur extends Entity {
 
