@@ -8,11 +8,6 @@ class Database extends PDO
 {
     private static $_instance = null;
 
-    private static $_server = "localhost";
-    private static $_user = "root";
-    private static $_pass = "";
-    private static $_db = "structures_lpg_1920";
-
     public static function getInstance() {
 
         if (is_null(self::$_instance)) {

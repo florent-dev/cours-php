@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <title>Nom du site</title>
         <meta name="description" content="">
-        <link href="../View/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="../View/js/bootstrap.min.js"></script>
-        <script src="../View/js/jquery.min.js"></script>
+        <link href="View/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="View/js/bootstrap.min.js"></script>
+        <script src="View/js/jquery.min.js"></script>
     </head>
     <body>
 <div class="container register">

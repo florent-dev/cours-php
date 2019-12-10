@@ -1,12 +1,24 @@
 <?php
-
+require_once("./Controller/HomeController.php");
 try {
-    if (!file_exists('Controller/'.$_SERVER['REQUEST_URI'].'.php')) {
-        echo '404 not found';
+    if (isset($_GET["action"])) {
+        if (stripos($_GET["action"], "Accueil")) {
+            $controler = new HomeController();
+            $accounts = $controler->viewHome();
+        } else {
+            $error = "Erreur : action non reconnue<br/>";
+        }
     } else {
-        include('Controller/'.strtoupper($_SERVER['REQUEST_URI']).'Controller.php');
+        ?>
+        <a href="index.php?action=viewAccueil">bouton temporaire</a><br/>
+        <?php
     }
+
 } catch (Exception $e) {
-    //include ('View/404.php');
-    echo 'Ce fichier n\'existe pas !';
+    $error = "Error " . $e->getCode() . " : " . $e->getMessage() . "<br/>" . str_replace("\n", "<br/>", $e->getTraceAsString());
 }
+if (isset($error)) {
+    require(__DIR__ . '/View/error.php');
+}
+
+
