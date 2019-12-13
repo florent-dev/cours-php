@@ -3,6 +3,7 @@
 namespace Model\Entities;
 
 use PDO;
+use PDOException;
 
 class Database extends PDO
 {
