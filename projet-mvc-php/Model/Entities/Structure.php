@@ -4,10 +4,11 @@ namespace Model\Entities;
 
 require_once('Entity.php');
 
+use Model\Entity\Secteur;
 use mvc\Model\Entities\Entity;
 
-class Structure extends Entity {
-
+class Structure extends Entity
+{
     private $_id;
     private $_nom;
     private $_rue;
@@ -17,21 +18,20 @@ class Structure extends Entity {
     private $_nbDonateurs;
     private $_nbActionnaires;
 
-    //Controleur
-    public function __construct($id,$nom,$rue,$cp,$ville,$estAssocie,$nbDonateurs,$nbActionnaires) {
-        $this->_id=$id;
-        $this->_nom=$nom;
-        $this->_rue=$rue;
-        $this->_cp=$cp;
-        $this->_ville=$ville;
-        $this->_estAssocie=$estAssocie;
-        $this->_nbDonateurs=$nbDonateurs;
-        $this->_nbActionnaires=$nbActionnaires;
+    public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie, $nbDonateurs, $nbActionnaires)
+    {
+        $this->_id = $id;
+        $this->_nom = $nom;
+        $this->_rue = $rue;
+        $this->_cp = $cp;
+        $this->_ville = $ville;
+        $this->_estAssocie = $estAssocie;
+        $this->_nbDonateurs = $nbDonateurs;
+        $this->_nbActionnaires = $nbActionnaires;
     }
 
-    //Getteurs
     /**
-     * @return mixed
+     * @return string
      */
     public function getVille()
     {
@@ -39,7 +39,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return Secteur
      */
     public function getSecteur()
     {
@@ -47,7 +47,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getRue()
     {
@@ -55,7 +55,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNom()
     {
@@ -63,7 +63,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getNbDonateurs()
     {
@@ -71,7 +71,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getNbActionnaires()
     {
@@ -79,7 +79,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -87,7 +87,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getEstAssocie()
     {
@@ -95,16 +95,15 @@ class Structure extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCp()
     {
         return $this->_cp;
     }
 
-    //Setteurs
     /**
-     * @param mixed $ville
+     * @param string $ville
      */
     public function setVille($ville)
     {
@@ -112,7 +111,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $rue
+     * @param int $rue
      */
     public function setRue($rue)
     {
@@ -120,7 +119,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $nom
+     * @param string $nom
      */
     public function setNom($nom)
     {
@@ -128,7 +127,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $nbDonnateurs
+     * @param int $nbDonnateurs
      */
     public function setNbDonateurs($nbDonnateurs)
     {
@@ -136,7 +135,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $nbActionnaires
+     * @param int $nbActionnaires
      */
     public function setNbActionnaires($nbActionnaires)
     {
@@ -144,7 +143,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $int
+     * @param int $int
      */
     public function setId($int)
     {
@@ -152,7 +151,7 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $estAssocie
+     * @param bool $estAssocie
      */
     public function setEstAssocie($estAssocie)
     {
@@ -160,16 +159,11 @@ class Structure extends Entity {
     }
 
     /**
-     * @param mixed $cp
+     * @param int $cp
      */
     public function setCp($cp)
     {
         $this->_cp = $cp;
     }
-
-
-
-
-
 
 }

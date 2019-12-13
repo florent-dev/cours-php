@@ -6,24 +6,23 @@ require_once('Entity.php');
 
 use mvc\Model\Entities\Entity;
 
-class Secteur extends Entity {
-
+class Secteur extends Entity
+{
     private $_int;
     private $_nom;
     private $_rue;
     private $_cp;
 
-    //Constructeur
-    public function __construct($int, $nom,$rue,$cp) {
-        $this->_int=$int;
-        $this->_nom=$nom;
-        $this->_rue=$rue;
-        $this->_cp=$cp;
+    public function __construct($int, $nom, $rue, $cp)
+    {
+        $this->_int = $int;
+        $this->_nom = $nom;
+        $this->_rue = $rue;
+        $this->_cp = $cp;
     }
 
-    //Getteurs
     /**
-     * @return mixed
+     * @return int
      */
     public function getCp()
     {
@@ -31,7 +30,7 @@ class Secteur extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getInt()
     {
@@ -39,16 +38,15 @@ class Secteur extends Entity {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getNom()
     {
         return $this->_nom;
     }
 
-    //Setteurs
     /**
-     * @return mixed
+     * @return int
      */
     public function getRue()
     {
@@ -56,7 +54,7 @@ class Secteur extends Entity {
     }
 
     /**
-     * @param mixed $cp
+     * @param int $cp
      */
     public function setCp($cp)
     {
@@ -64,7 +62,7 @@ class Secteur extends Entity {
     }
 
     /**
-     * @param mixed $rue
+     * @param int $rue
      */
     public function setRue($rue)
     {
@@ -72,7 +70,7 @@ class Secteur extends Entity {
     }
 
     /**
-     * @param mixed $nom
+     * @param string $nom
      */
     public function setNom($nom)
     {
@@ -80,7 +78,7 @@ class Secteur extends Entity {
     }
 
     /**
-     * @param mixed $int
+     * @param int $int
      */
     public function setInt($int)
     {

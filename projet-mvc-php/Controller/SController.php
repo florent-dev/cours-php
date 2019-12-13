@@ -1,7 +1,8 @@
 <?php
+
 namespace mvc\Controller;
 
-require_once(__DIR__.'/../Model/Manager/PDOManager.php');
+require_once(__DIR__ . '/../Model/Manager/PDOManager.php');
 
 use mvc\Model\Entities\Entity;
 use mvc\Model\Manager\PDOManager;
@@ -35,7 +36,7 @@ abstract class SController
      */
     public function findById(int $id): ?Entity
     {
-        return($this->getManager()->findById($id));
+        return ($this->getManager()->findById($id));
     }
 
     /**
@@ -43,7 +44,7 @@ abstract class SController
      */
     public function find(): PDOStatement
     {
-        return($this->getManager()->find());
+        return ($this->getManager()->find());
     }
 
     /**
@@ -51,7 +52,7 @@ abstract class SController
      */
     public function findAll(): array
     {
-        return($this->getManager()->findAll(PDO::FETCH_ASSOC));
+        return ($this->getManager()->findAll(PDO::FETCH_ASSOC));
     }
 
     /**

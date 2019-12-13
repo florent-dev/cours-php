@@ -6,7 +6,7 @@ class HomeController
     {
     }
 
-    public function viewHome() : void
+    public function viewHome(): void
     {
         require(__DIR__ . '/../View/viewHome.php');
     }

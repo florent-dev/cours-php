@@ -1,4 +1,5 @@
 <?php
+
 namespace mvc\Controller;
 
 use Model\Entities\Structure;
@@ -16,7 +17,7 @@ class StructureController extends SController
         $this->manager = new StructureManager();
     }
 
-    public function viewStructures() : void
+    public function viewStructures(): void
     {
         $title = "Liste des structures";
         $structures = $this->findAll();
@@ -24,7 +25,7 @@ class StructureController extends SController
         require(__DIR__ . '/../View/viewStructures.php');
     }
 
-    public function viewStructure($id) : void
+    public function viewStructure($id): void
     {
         $title = "Détail de la structure";
         $structure = $this->findById($id);
@@ -32,9 +33,9 @@ class StructureController extends SController
         require(__DIR__ . '/../View/viewStructure.php');
     }
 
-    public function addStructure() : void
+    public function addStructure(): void
     {
-        $structure = new Structure(null, $_POST["nom"], $_POST["rue"], $_POST["cp"], $_POST["ville"], $_POST["estasso"],$_POST["nb_donateurs"],$_POST["nb_actionnaires"]);
+        $structure = new Structure(null, $_POST["nom"], $_POST["rue"], $_POST["cp"], $_POST["ville"], $_POST["estasso"], $_POST["nb_donateurs"], $_POST["nb_actionnaires"]);
         $this->insert($structure);
         header("Location: index.php?action=viewStructures");
     }
