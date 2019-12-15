@@ -39,7 +39,7 @@ class SecteurManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        $req = 'insert into secteur(id, libelle, readonly) values (:id, :libelle)';
+        $req = 'insert into secteur(id, libelle) values (:id, :libelle)';
         $params = ['id' => $e->getId(), 'libelle' => $e->getLibelle()];
         $res = $this->executePrepare($req, $params);
         return $res;
