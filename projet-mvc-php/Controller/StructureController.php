@@ -17,13 +17,6 @@ class StructureController extends SController
         $this->manager = new StructureManager();
     }
 
-    public function viewHome(): void
-    {
-        $title = 'Accueil';
-
-        require(__DIR__ . '/../View/viewHome.php');
-    }
-
     public function viewStructures(): void
     {
         $title = 'Liste des structures';

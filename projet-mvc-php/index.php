@@ -10,17 +10,18 @@ if ($environnement === 'dev') {
     error_reporting(E_ALL);
 }
 
-require_once(__DIR__ . '/Controller/StructureController.php');
+require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/SecteurController.php');
+require_once(__DIR__ . '/Controller/StructureController.php');
 
 use mvc\Controller\StructureController;
 use mvc\Controller\SecteurController;
 
 try {
-    $controler = new StructureController();
 
     if (isset($_GET['action'])) {
         if (stripos($_GET['action'], 'Structure')) {
+            $controler = new StructureController();
             switch ($_GET['action']) {
                 case 'viewStructure':
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -71,6 +72,7 @@ try {
             $error = 'Erreur : action non reconnue<br/>';
         }
     } else {
+        $controler = new HomeController();
         $controler->viewHome();
     }
 

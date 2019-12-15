@@ -13,35 +13,40 @@ class SecteurManager extends PDOManager
 {
     public function findById(int $id): Entity
     {
-        $stmt = $this->executePrepare('select * from secteur where id=:id', ['id' => $id]);
+        $stmt = $this->executePrepare('SELECT * FROM secteur WHERE id=:id', ['id' => $id]);
         $secteur = $stmt->fetch();
+
         if (!$secteur) return null;
+
         return new Secteur($secteur['ID'], $secteur['LIBELLE']);
     }
 
     public function find(): PDOStatement
     {
-        $stmt = $this->executePrepare('select * from secteur',[]);
+        $stmt = $this->executePrepare('SELECT * FROM secteur', []);
+
         return $stmt;
     }
 
     public function findAll(int $pdoFecthMode): array
     {
-        $stmt=$this->find();
+        $stmt = $this->find();
         $secteurs = $stmt->fetchAll($pdoFecthMode);
 
-        $secteursEntities=[];
+        $secteursEntities = [];
         foreach($secteurs as $secteur) {
             $secteursEntities[] = new Secteur($secteur['ID'],$secteur['LIBELLE']);
         }
+
         return $secteursEntities;
     }
 
     public function insert(Entity $e): PDOStatement
     {
-        $req = 'insert into secteur(id, libelle) values (:id, :libelle)';
+        $req = 'INSERT INTO secteur(id, libelle) VALUES (:id, :libelle)';
         $params = ['id' => $e->getId(), 'libelle' => $e->getLibelle()];
         $res = $this->executePrepare($req, $params);
+
         return $res;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Model\Entities;
 
-require_once('Entity.php');
+require_once 'Entity.php';
 
 use Model\Entity\Secteur;
 use mvc\Model\Entities\Entity;

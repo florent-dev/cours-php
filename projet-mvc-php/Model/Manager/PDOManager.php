@@ -4,7 +4,7 @@ namespace mvc\Model\Manager;
 
 require_once(__DIR__.'/../../conf/config.php');
 
-use mvc\model\entities\Entity;
+use mvc\Model\Entities\Entity;
 use \PDO;
 use \PDOStatement;
 use \PDOException;
@@ -21,12 +21,12 @@ abstract class PDOManager
      */
     public function __construct()
     {
-        $this->host = $GLOBALS["host"];
-        $this->db = $GLOBALS["db"];
-        $this->encoding = $GLOBALS["encoding"];
-        $this->user = $GLOBALS["user"];
-        $this->pass = $GLOBALS["pass"];
-        $this->pdoErrorMode = $GLOBALS["pdoErrorMode"];
+        $this->host = $GLOBALS['host'];
+        $this->db = $GLOBALS['db'];
+        $this->encoding = $GLOBALS['encoding'];
+        $this->user = $GLOBALS['user'];
+        $this->pass = $GLOBALS['pass'];
+        $this->pdoErrorMode = $GLOBALS['pdoErrorMode'];
     }
 
     /**
@@ -141,7 +141,6 @@ abstract class PDOManager
             return $stmt;
         }
         catch (PDOException $ex) {
-            //echo "Error ".$ex->getCode()." : ".$ex->getMessage()."<br/>".$ex->getTraceAsString();
             throw $ex;
         }
         finally {
