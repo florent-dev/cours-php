@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php require 'templateHeader.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title><?= $title ?></title>
-</head>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4"><?= $title ?> n°<?= $secteur->getId() ?></h1>
+        </div>
+    </div>
 
-<body>
-Id : <?= $secteur->getId() ?><br/>
-Name : <?= $secteur->getLibelle() ?><br/>
-<a href="index.php?action=viewStructures">Liste des structures</a><br/>
-<a href="index.php?action=viewSecteurs">Liste des secteurs</a>
-</body>
+    <div>Id : <?= $secteur->getId() ?></div>
+    <div>Nom : <?= $secteur->getNom() ?></div>
 
-</html>
+    <hr>
+
+    <ul class="list-group">
+        <a href='index.php?action=viewSecteurs'><li class="list-group-item">Retour sur la liste des secteurs</li></a>
+        <a href='index.php'><li class="list-group-item">Retourner sur l'accueil</li></a>
+    </ul>
+</div>
+
+<?php require 'templateFooter.php'; ?>

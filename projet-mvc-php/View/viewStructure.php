@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php require 'templateHeader.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title><?= $title ?></title>
-</head>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Structure n°<?= $structure->getId() ?></h1>
+        </div>
+    </div>
+    
+    <div>Id : <?= $structure->getId() ?></div>
+    <div>Nom : <?= $structure->getNom() ?></div>
+    <div>Rue : <?= $structure->getRue() ?></div>
+    <div>CP : <?= $structure->GetCp() ?></div>
+    <div>Ville : <?= $structure->getVille() ?></div>
+    <div>Est associé : <?= $structure->getEstAssocie() ?></div>
+    <div>Nombre de donateurs : <?= $structure->getNbDonateurs() ?></div>
+    <div>Nombre de d'actionnaires : <?= $structure->getNbActionnaires() ?></div>
 
-<body>
-Id : <?= $structure->getId() ?><br/>
-Nom : <?= $structure->getNom() ?><br/>
-Rue : <?= $structure->getRue() ?><br/>
-CP : <?= $structure->GetCp() ?><br/>
-Ville : <?= $structure->getVille() ?><br/>
-Est associé : <?= $structure->getEstAssocie() ?><br/>
-Nombre de donateurs : <?= $structure->getNbDonateurs() ?><br/><br/>
-Nombre de d'actionnaires : <?= $structure->getNbActionnaires() ?><br/><br/>
-<a href="index.php?action=viewStructures">Liste des structures</a><br/>
-<a href="index.php?action=viewSecteurs">Liste des secteurs</a>
-</body>
+    <hr>
 
-</html>
+    <ul class="list-group">
+        <a href='index.php?action=viewStructures'><li class="list-group-item">Retour sur la liste des structures</li></a>
+        <a href='index.php'><li class="list-group-item">Retourner sur l'accueil</li></a>
+    </ul>
+</div>
+
+<?php require 'templateFooter.php'; ?>

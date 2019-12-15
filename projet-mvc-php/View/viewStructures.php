@@ -1,58 +1,78 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php require 'templateHeader.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title><?= $title ?></title>
-</head>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Gestion des structures</h1>
+        </div>
+    </div>
 
-<body>
+    <h2>Liste des structures</h2>
+    <?php foreach ($structures as $structure) { ?>
+        <a href='index.php?action=viewStructure&id=<?= $structure->getId() ?>'><li class="list-group-item"><?= $structure->getNom(); ?></li></a>
+    <?php } ?>
 
-<?php
-foreach ($structures as $structure) { ?>
-    <form method="post" action="index.php?action=viewStructure&id=<?= $structure->getId() ?>">
-        <label><?= $structure->getNom(); ?></label>
-        <input type="submit" name="viewAccount" value="Détails"/>
+    <form method="post" action="index.php?action=addStructure" class="mt-5 mb-5">
+        <h2>Ajouter une structure</h2>
+
+        <div class="form-group row">
+            <label for="nom" class="col-sm-2 col-form-label">Nom</label>
+            <div class="col-sm-10">
+                <input required type="text" class="form-control" placeholder="Nom de la structure" name="nom" id="nom">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="rue" class="col-sm-2 col-form-label">Rue</label>
+            <div class="col-sm-10">
+                <input required type="text" class="form-control" placeholder="Rue" name="rue" id="rue">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="cp" class="col-sm-2 col-form-label">Code Postal</label>
+            <div class="col-sm-10">
+                <input required type="text" class="form-control" placeholder="Code postal" name="cp" id="cp">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="ville" class="col-sm-2 col-form-label">Ville</label>
+            <div class="col-sm-10">
+                <input required type="text" class="form-control" placeholder="Ville" name="ville" id="ville">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="estasso" class="col-sm-2 col-form-label">Est associé</label>
+            <div class="col-sm-10">
+                <input required type="text" class="form-control" placeholder="Est associé" name="estasso" id="estasso">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nb_donateurs" class="col-sm-2 col-form-label">Nombre de donateurs</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Nombre de donateurs" name="nb_donateurs" id="nb_donateurs">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nombre d'actionnaires</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="Nombre d'actionnaires" name="nb_actionnaires" id="nb_actionnaires">
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary mb-2" name="add" value="Ajouter la structure">
     </form>
-    <?php
-}
-?>
 
-<br/><br/>
-<form method="post" action="index.php?action=addStructure">
-    <table>
-        <tr>
-            <td>Nom</td>
-            <td><input required type="text" name="nom"></td>
-        </tr>
-        <tr>
-            <td>Rue</td>
-            <td><input required type="text" name="rue"></td>
-        </tr>
-        <tr>
-            <td>Cp</td>
-            <td><input required type="text" name="cp"></td>
-        </tr>
-        <tr>
-            <td>Ville</td>
-            <td><input required type="text" name="ville"></td>
-        </tr>
-        <tr>
-            <td>Est associé</td>
-            <td><input required type="text" name="estasso"></td>
-        </tr>
-        <tr>
-            <td>Nombre de donateurs</td>
-            <td><input type="text" name="nb_donateurs"></td>
-        </tr>
-        <tr>
-            <td>Nombre d'actionnaires</td>
-            <td><input type="text" name="nb_actionnaires"></td>
-        </tr>
-    </table>
-    <input type="submit" name="add" value="Ajouter">
-</form>
-<br/><br/><a href="index.php?action=viewSecteurs">Liste des secteurs</a>
-</body>
+    <hr>
 
-</html>
+    <ul class="list-group">
+        <a href='index.php?action=viewSecteurs'><li class="list-group-item">Liste des secteurs</li></a>
+        <a href='index.php'><li class="list-group-item">Retourner sur l'accueil</li></a>
+    </ul>
+</div>
+
+<?php require 'templateFooter.php'; ?>

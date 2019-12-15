@@ -17,9 +17,10 @@ use mvc\Controller\StructureController;
 use mvc\Controller\SecteurController;
 
 try {
+    $controler = new StructureController();
+
     if (isset($_GET['action'])) {
         if (stripos($_GET['action'], 'Structure')) {
-            $controler = new StructureController();
             switch ($_GET['action']) {
                 case 'viewStructure':
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -70,10 +71,7 @@ try {
             $error = 'Erreur : action non reconnue<br/>';
         }
     } else {
-        ?>
-        <a href='index.php?action=viewStructures'>Liste des structures</a><br/>
-        <a href='index.php?action=viewSecteurs'>Liste des secteurs</a><br/>
-        <?php
+        $controler->viewHome();
     }
 
 } catch (Exception $e) {
