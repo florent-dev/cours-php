@@ -27,7 +27,7 @@ try {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $structure = $controler->viewStructure($_GET['id']);
                     } else {
-                        $error = 'Erreur : mauvais identifiant<br/>';
+                        $error = 'Erreur : mauvais identifiant';
                     }
                     break;
                 case 'viewStructures':
@@ -35,13 +35,13 @@ try {
                     break;
                 case 'addStructure':
                     if (isset($_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires'])) {
-                        $controler->addAccount();
+                        $controler->addStructure();
                     } else {
-                        $error = 'Erreur de paramètres<br/>';
+                        $error = 'Erreur de paramètres';
                     }
                     break;
                 default :
-                    $error = 'Erreur : action non reconnue<br/>';
+                    $error = 'Erreur : action non reconnue';
                     break;
             }
         } elseif (stripos($_GET['action'], 'Secteur')) {
@@ -51,7 +51,7 @@ try {
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $secteur = $controler->viewSecteur($_GET['id']);
                     } else {
-                        $error = 'Erreur : mauvais identifiant<br/>';
+                        $error = 'Erreur : mauvais identifiant';
                     }
                     break;
                 case 'viewSecteurs':
@@ -61,15 +61,15 @@ try {
                     if (isset($_POST['libelle'])) {
                         $controler->addSecteur();
                     } else {
-                        $error = 'Erreur de paramètres<br/>';
+                        $error = 'Erreur de paramètres';
                     }
                     break;
                 default :
-                    $error = 'Erreur : action non reconnue<br/>';
+                    $error = 'Erreur : action non reconnue';
                     break;
             }
         } else {
-            $error = 'Erreur : action non reconnue<br/>';
+            $error = 'Erreur : action non reconnue';
         }
     } else {
         $controler = new HomeController();
@@ -77,7 +77,7 @@ try {
     }
 
 } catch (Exception $e) {
-    $error = 'Error ' . $e->getCode() . ' : ' . $e->getMessage() . '<br/>' . str_replace('\n', '<br/>', $e->getTraceAsString());
+    $error = 'Error ' . $e->getCode() . ' : ' . $e->getMessage() . '' . str_replace('\n', '', $e->getTraceAsString());
 }
 
 if (isset($error)) {

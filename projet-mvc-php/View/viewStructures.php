@@ -25,14 +25,14 @@
         <div class="form-group row">
             <label for="rue" class="col-sm-2 col-form-label">Rue</label>
             <div class="col-sm-10">
-                <input required type="text" class="form-control" placeholder="Rue" name="rue" id="rue">
+                <input type="number" class="form-control" placeholder="Rue" name="rue" id="rue">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="cp" class="col-sm-2 col-form-label">Code Postal</label>
             <div class="col-sm-10">
-                <input required type="text" class="form-control" placeholder="Code postal" name="cp" id="cp">
+                <input required type="text" class="form-control" placeholder="Code postal" name="cp" id="cp" minlength="5" maxlength="5">
             </div>
         </div>
 
@@ -44,23 +44,23 @@
         </div>
 
         <div class="form-group row">
-            <label for="estasso" class="col-sm-2 col-form-label">Est associé</label>
+            <label for="estasso" class="col-sm-2 col-form-label">Secteur</label>
             <div class="col-sm-10">
-                <input required type="text" class="form-control" placeholder="Est associé" name="estasso" id="estasso">
+                <input required type="number" class="form-control" placeholder="Secteur associé" name="estasso" id="estasso" min="1">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="nb_donateurs" class="col-sm-2 col-form-label">Nombre de donateurs</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Nombre de donateurs" name="nb_donateurs" id="nb_donateurs">
+                <input required type="number" class="form-control" placeholder="Nombre de donateurs" name="nb_donateurs" id="nb_donateurs" value="0" min="0">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nombre d'actionnaires</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Nombre d'actionnaires" name="nb_actionnaires" id="nb_actionnaires">
+                <input required type="number" class="form-control" placeholder="Nombre d'actionnaires" name="nb_actionnaires" id="nb_actionnaires" value="0" min="0">
             </div>
         </div>
 
