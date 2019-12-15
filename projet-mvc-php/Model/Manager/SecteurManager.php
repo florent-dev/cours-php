@@ -28,10 +28,10 @@ class SecteurManager extends PDOManager
         return $stmt;
     }
 
-    public function findAll(int $pdoFecthMode): array
+    public function findAll(int $pdoFetchMode): array
     {
         $stmt = $this->find();
-        $secteurs = $stmt->fetchAll($pdoFecthMode);
+        $secteurs = $stmt->fetchAll($pdoFetchMode);
 
         $secteursEntities = [];
         foreach($secteurs as $secteur) {

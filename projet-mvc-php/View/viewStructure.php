@@ -3,7 +3,7 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Structure n°<?= $structure->getId() ?></h1>
+            <h1 class="display-4"><?= (($structure->getEstAssocie()) ? 'Association' : 'Société') ?> <?= $structure->getNom() ?></h1>
         </div>
     </div>
     
@@ -12,7 +12,7 @@
     <div>Rue : <?= $structure->getRue() ?></div>
     <div>CP : <?= $structure->GetCp() ?></div>
     <div>Ville : <?= $structure->getVille() ?></div>
-    <div>Est associé : <?= $structure->getEstAssocie() ?></div>
+    <div>Type : <?= (($structure->getEstAssocie()) ? 'Association' : 'Société') ?></div>
     <div>Nombre de donateurs : <?= $structure->getNbDonateurs() ?></div>
     <div>Nombre de d'actionnaires : <?= $structure->getNbActionnaires() ?></div>
 

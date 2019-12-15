@@ -44,21 +44,35 @@
         </div>
 
         <div class="form-group row">
-            <label for="estasso" class="col-sm-2 col-form-label">Secteur</label>
+            <label for="secteurs" class="col-sm-2 col-form-label">Secteurs associés</label>
             <div class="col-sm-10">
-                <input required type="number" class="form-control" placeholder="Secteur associé" name="estasso" id="estasso" min="1">
+                <select required class="form-control" name="secteurs" id="secteurs">
+                    <?php foreach ($secteurs as $secteur) { ?>
+                        <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="nb_donateurs" class="col-sm-2 col-form-label">Nombre de donateurs</label>
+            <label for="estasso" class="col-sm-2 col-form-label">Association ?</label>
+            <div class="col-sm-10">
+                <input type="radio" name="estasso" id="estasso_oui" value="1" />
+                <label for="estasso_oui">Oui</label>
+                <input type="radio" name="estasso" id="estasso_non" value="0" checked />
+                <label for="estasso_non">Non</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nb_donateurs" class="col-sm-2 col-form-label">Nb de donateurs (si association)</label>
             <div class="col-sm-10">
                 <input required type="number" class="form-control" placeholder="Nombre de donateurs" name="nb_donateurs" id="nb_donateurs" value="0" min="0">
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nombre d'actionnaires</label>
+            <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nb d'actionnaires (si société)</label>
             <div class="col-sm-10">
                 <input required type="number" class="form-control" placeholder="Nombre d'actionnaires" name="nb_actionnaires" id="nb_actionnaires" value="0" min="0">
             </div>
