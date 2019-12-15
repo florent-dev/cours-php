@@ -8,7 +8,7 @@
     </div>
 
     <div>Id : <?= $secteur->getId() ?></div>
-    <div>Nom : <?= $secteur->getNom() ?></div>
+    <div>Nom : <?= $secteur->getLibelle() ?></div>
 
     <hr>
 

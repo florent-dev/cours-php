@@ -9,8 +9,8 @@
     </div>
 
     <ul class="list-group">
-        <a href='index.php?action=viewStructures'><li class="list-group-item">Consulter et gérer la liste des structures</li></a>
-        <a href='index.php?action=viewSecteurs'><li class="list-group-item">Consulter et gérer la liste des secteurs</li></a>
+        <a href='index.php?action=viewSecteurs'><li class="list-group-item">Gérer les secteurs</li></a>
+        <a href='index.php?action=viewStructures'><li class="list-group-item">Gérer les structures</li></a>
     </ul>
 </div>
 

@@ -2,87 +2,50 @@
 
 namespace Model\Entity;
 
-require_once('Entity.php');
+require_once 'Entity.php';
 
 use mvc\Model\Entities\Entity;
 
 class Secteur extends Entity
 {
-    private $_int;
-    private $_nom;
-    private $_rue;
-    private $_cp;
+    private $_id;
+    private $_libelle;
 
-    public function __construct($int, $nom, $rue, $cp)
+    public function __construct($id, $libelle)
     {
-        $this->_int = $int;
-        $this->_nom = $nom;
-        $this->_rue = $rue;
-        $this->_cp = $cp;
+        $this->_id = $id;
+        $this->_libelle = $libelle;
     }
 
     /**
      * @return int
      */
-    public function getCp()
+    public function getId()
     {
-        return $this->_cp;
+        return $this->_id;
     }
 
     /**
-     * @return int
+     * @param int $id
      */
-    public function getInt()
+    public function setId($id): void
     {
-        return $this->_int;
+        $this->_id = $id;
     }
 
     /**
      * @return string
      */
-    public function getNom()
+    public function getLibelle()
     {
-        return $this->_nom;
+        return $this->_libelle;
     }
 
     /**
-     * @return int
+     * @param string $libelle
      */
-    public function getRue()
+    public function setLibelle($libelle): void
     {
-        return $this->_rue;
+        $this->_libelle = $libelle;
     }
-
-    /**
-     * @param int $cp
-     */
-    public function setCp($cp)
-    {
-        $this->_cp = $cp;
-    }
-
-    /**
-     * @param int $rue
-     */
-    public function setRue($rue)
-    {
-        $this->_rue = $rue;
-    }
-
-    /**
-     * @param string $nom
-     */
-    public function setNom($nom)
-    {
-        $this->_nom = $nom;
-    }
-
-    /**
-     * @param int $int
-     */
-    public function setInt($int)
-    {
-        $this->_int = $int;
-    }
-
 }

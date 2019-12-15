@@ -8,7 +8,7 @@
     </div>
 
     <?php foreach ($secteurs as $secteur) { ?>
-        <a href='index.php?action=viewSecteur&id=<?= $secteur->getId() ?>'><li class="list-group-item"><?= $secteur->getNom(); ?></li></a>
+        <a href='index.php?action=viewSecteur&id=<?= $secteur->getId() ?>'><li class="list-group-item"><?= $secteur->getLibelle(); ?></li></a>
     <?php } ?>
 
     <form method="post" action="index.php?action=addSecteur" class="mt-5 mb-5">
