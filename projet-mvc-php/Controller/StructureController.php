@@ -41,7 +41,37 @@ class StructureController extends SController
         require(__DIR__ . '/../View/viewStructure.php');
     }
 
-    public function addStructure(): void
+    public function editorStructure($id): void
+    {
+        $structure = $this->findById($id);
+        $action = 'index.php?action=';
+
+        if (null === $structure) {
+            $title = 'Créer la structure';
+            $action .= 'createStructure';
+        } else {
+            $title = 'Modifier la structure n°' . $structure->getId();
+            $action .= 'updateStructure&id=' . $structure->getId();
+        }
+
+        require(__DIR__ . '/../View/editorStructure.php');
+    }
+
+    public function createStructure(): void
+    {
+        $structure = new Structure(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires']);
+        $this->insert($structure);
+        header('Location: index.php?action=viewStructures');
+    }
+
+    public function updateStructure($id): void
+    {
+        $structure = new Structure(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires']);
+        $this->insert($structure);
+        header('Location: index.php?action=viewStructures');
+    }
+
+    public function deleteStructure($id): void
     {
         $structure = new Structure(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires']);
         $this->insert($structure);

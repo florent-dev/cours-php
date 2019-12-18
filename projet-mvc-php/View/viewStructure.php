@@ -16,6 +16,9 @@
     <div>Nombre de donateurs : <?= $structure->getNbDonateurs() ?></div>
     <div>Nombre de d'actionnaires : <?= $structure->getNbActionnaires() ?></div>
 
+    <button type="button" class="btn btn-sm btn-info">Modifier</button>
+    <button type="button" class="btn btn-sm btn-danger">Supprimer</button>
+
     <hr>
 
     <ul class="list-group">

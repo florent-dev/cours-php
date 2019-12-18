@@ -10,6 +10,11 @@
     <div>Id : <?= $secteur->getId() ?></div>
     <div>Nom : <?= $secteur->getLibelle() ?></div>
 
+    <p class="mt-4">
+        <a href='index.php?action=editorSecteur&id=<?= $secteur->getId() ?>'><button type="button" class="btn btn-info">Modifier</button></a>
+        <a href='index.php?action=deleteSecteur&id=<?= $secteur->getId() ?>'><button type="button" class="btn btn-danger">Supprimer</button></a>
+    </p>
+
     <hr>
 
     <ul class="list-group">

@@ -7,10 +7,9 @@
         </div>
     </div>
 
-    <h3>Erreur :</h3>
     <code><?= $error ?></code>
 
-    <hr>
+    <br><br>
 
     <ul class="list-group">
         <a href='index.php'><li class="list-group-item">Retourner sur l'accueil</li></a>

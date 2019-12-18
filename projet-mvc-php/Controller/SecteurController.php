@@ -32,10 +32,49 @@ class SecteurController extends SController
         require(__DIR__ . '/../View/viewSecteur.php');
     }
 
-    public function addSecteur(): void
+    public function editorStructure($id): void
+    {
+        $secteur = (null !== $id) ? $this->findById($id) : null;
+        $action = 'index.php?action=';
+
+        if (null === $secteur) {
+            $title = 'Créer le secteur';
+            $action .= 'createSecteur';
+        } else {
+            $title = 'Modifier le secteur n°' . $secteur->getId();
+            $action .= 'updateSecteur&id=' . $secteur->getId();
+        }
+
+        require(__DIR__ . '/../View/editorSecteur.php');
+    }
+
+    public function createSecteur(): void
     {
         $structure = new Secteur(null, $_POST['libelle']);
         $this->insert($structure);
+        header('Location: index.php?action=viewSecteurs');
+    }
+
+    public function updateSecteur($id): void
+    {
+        $secteur = $this->findById($id);
+
+        if (null !== $secteur) {
+            $secteur->setLibelle($_POST['libelle']);
+            $this->update($secteur);
+        }
+
+        header('Location: index.php?action=viewSecteurs');
+    }
+
+    public function deleteSecteur($id): void
+    {
+        $secteur = $this->findById($id);
+
+        if (null !== $secteur) {
+            $this->delete($secteur);
+        }
+
         header('Location: index.php?action=viewSecteurs');
     }
 }

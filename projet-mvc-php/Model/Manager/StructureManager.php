@@ -31,7 +31,7 @@ class StructureManager extends PDOManager
 
     public function findAll(int $pdoFecthMode): array
     {
-        $stmt=$this->find();
+        $stmt = $this->find();
         $structures = $stmt->fetchAll($pdoFecthMode);
 
         $structuresEntities = [];
@@ -45,10 +45,28 @@ class StructureManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        var_dump($e);
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs, :nb_actionnaires)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
             'ville' => $e->getVille(), 'estasso' => $e->getEstAssocie(), 'nb_donateurs' => $e->getNbDonateurs(), 'nb_actionnaires' => $e->getNbActionnaires());
+        $res = $this->executePrepare($req, $params);
+
+        return $res;
+    }
+
+    public function update(Entity $e): PDOStatement
+    {
+        $req = 'UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, estasso=:estasso, nb_donateurs=:nb_donateurs, nb_actionnaires=:nb_actionnaires WHERE id=:id';
+        $params = array('nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(), 'ville' => $e->getVille(), 'estasso' => $e->getEstAssocie(),
+            'nb_donateurs' => $e->getNbDonateurs(), 'nb_actionnaires' => $e->getNbActionnaires(), 'id' => $e->getId());
+        $res = $this->executePrepare($req, $params);
+
+        return $res;
+    }
+
+    public function delete(Entity $e): PDOStatement
+    {
+        $req = 'DELETE FROM structure WHERE id=:id';
+        $params = array('id' => $e->getId());
         $res = $this->executePrepare($req, $params);
 
         return $res;

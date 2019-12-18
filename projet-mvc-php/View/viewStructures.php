@@ -9,77 +9,12 @@
 
     <h2>Liste des structures</h2>
     <?php foreach ($structures as $structure) { ?>
-        <a href='index.php?action=viewStructure&id=<?= $structure->getId() ?>'><li class="list-group-item"><?= $structure->getNom(); ?></li></a>
+        <a href='index.php?action=viewStructure&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-dark mt-2"><?= $structure->getNom(); ?></button></a>
     <?php } ?>
 
-    <form method="post" action="index.php?action=addStructure" class="mt-5 mb-5">
-        <h2>Ajouter une structure</h2>
-
-        <div class="form-group row">
-            <label for="nom" class="col-sm-2 col-form-label">Nom</label>
-            <div class="col-sm-10">
-                <input required type="text" class="form-control" placeholder="Nom de la structure" name="nom" id="nom">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="rue" class="col-sm-2 col-form-label">Rue</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" placeholder="Rue" name="rue" id="rue">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="cp" class="col-sm-2 col-form-label">Code Postal</label>
-            <div class="col-sm-10">
-                <input required type="text" class="form-control" placeholder="Code postal" name="cp" id="cp" minlength="5" maxlength="5">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="ville" class="col-sm-2 col-form-label">Ville</label>
-            <div class="col-sm-10">
-                <input required type="text" class="form-control" placeholder="Ville" name="ville" id="ville">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="secteurs" class="col-sm-2 col-form-label">Secteurs associés</label>
-            <div class="col-sm-10">
-                <select required class="form-control" name="secteurs" id="secteurs">
-                    <?php foreach ($secteurs as $secteur) { ?>
-                        <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
-                    <?php } ?>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="estasso" class="col-sm-2 col-form-label">Association ?</label>
-            <div class="col-sm-10">
-                <input type="radio" name="estasso" id="estasso_oui" value="1" />
-                <label for="estasso_oui">Oui</label>
-                <input type="radio" name="estasso" id="estasso_non" value="0" checked />
-                <label for="estasso_non">Non</label>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="nb_donateurs" class="col-sm-2 col-form-label">Nb de donateurs (si association)</label>
-            <div class="col-sm-10">
-                <input required type="number" class="form-control" placeholder="Nombre de donateurs" name="nb_donateurs" id="nb_donateurs" value="0" min="0">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nb d'actionnaires (si société)</label>
-            <div class="col-sm-10">
-                <input required type="number" class="form-control" placeholder="Nombre d'actionnaires" name="nb_actionnaires" id="nb_actionnaires" value="0" min="0">
-            </div>
-        </div>
-
-        <input type="submit" class="btn btn-primary mb-2" name="add" value="Ajouter la structure">
-    </form>
+    <p class="mt-4">
+        <a href='index.php?action=editorStructure'><button type="button" class="btn btn-info">Ajouter une structure</button></a>
+    </p>
 
     <hr>
 

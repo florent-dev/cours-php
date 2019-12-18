@@ -25,17 +25,21 @@ try {
             switch ($_GET['action']) {
                 case 'viewStructure':
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        $structure = $controler->viewStructure($_GET['id']);
+                        $controler->viewStructure($_GET['id']);
                     } else {
                         $error = 'Erreur : mauvais identifiant';
                     }
                     break;
                 case 'viewStructures':
-                    $structure = $controler->viewStructures();
+                    $controler->viewStructures();
                     break;
-                case 'addStructure':
+                case 'editorStructure':
+                    $idStructure = (isset($_GET['id'])) ? $_GET['id'] : null;
+                    $controler->editorStructure($idStructure);
+                    break;
+                case 'createStructure':
                     if (isset($_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires'])) {
-                        $controler->addStructure();
+                        $controler->createStructure();
                     } else {
                         $error = 'Erreur de paramètres';
                     }
@@ -49,17 +53,39 @@ try {
             switch ($_GET['action']) {
                 case 'viewSecteur':
                     if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        $secteur = $controler->viewSecteur($_GET['id']);
+                        $controler->viewSecteur($_GET['id']);
                     } else {
                         $error = 'Erreur : mauvais identifiant';
                     }
                     break;
                 case 'viewSecteurs':
-                    $secteur = $controler->viewSecteurs();
+                    $controler->viewSecteurs();
                     break;
-                case 'addSecteur':
+                case 'editorSecteur':
+                    $idStructure = (isset($_GET['id'])) ? $_GET['id'] : null;
+                    if (isset($_GET['id']) && $idStructure <= 0) {
+                        $error = 'Erreur : mauvais identifiant';
+                    } else {
+                        $controler->editorStructure($idStructure);
+                    }
+                    break;
+                case 'createSecteur':
                     if (isset($_POST['libelle'])) {
-                        $controler->addSecteur();
+                        $controler->createSecteur();
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                case 'updateSecteur':
+                    if (isset($_POST['id'])) {
+                        $controler->updateSecteur($_POST['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                case 'deleteSecteur':
+                    if (isset($_GET['id'])) {
+                        $controler->deleteSecteur($_GET['id']);
                     } else {
                         $error = 'Erreur de paramètres';
                     }

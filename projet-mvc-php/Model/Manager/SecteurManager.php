@@ -49,4 +49,22 @@ class SecteurManager extends PDOManager
 
         return $res;
     }
+
+    public function update(Entity $e): PDOStatement
+    {
+        $req = 'UPDATE secteur SET libelle=:libelle WHERE id=:id';
+        $params = array('libelle' => $e->getLibelle(), 'id' => $e->getId());
+        $res = $this->executePrepare($req, $params);
+
+        return $res;
+    }
+
+    public function delete(Entity $e): PDOStatement
+    {
+        $req = 'DELETE FROM secteur WHERE id=:id';
+        $params = array('id' => $e->getId());
+        $res = $this->executePrepare($req, $params);
+
+        return $res;
+    }
 }

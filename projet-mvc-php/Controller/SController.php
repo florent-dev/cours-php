@@ -62,4 +62,20 @@ abstract class SController
     {
         $this->getManager()->insert($e);
     }
+
+    /**
+     * @param Entity $o
+     */
+    public function update(Entity $e): void
+    {
+        $this->getManager()->update($e);
+    }
+
+    /**
+     * @param Entity $o
+     */
+    public function delete(Entity $e): void
+    {
+        $this->getManager()->delete($e);
+    }
 }
