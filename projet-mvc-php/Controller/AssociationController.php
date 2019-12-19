@@ -18,6 +18,7 @@ class AssociationController extends SController
     public function viewAssociations(): void
     {
         $structures = $this->findAll();
+        $struct=false;
 
         require(__DIR__ . '/../View/viewStructures.php');
     }
@@ -31,8 +32,7 @@ class AssociationController extends SController
 
     public function editorAssociation($id): void
     {
-        var_dump($id);
-        exit;
+
         $structure = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 

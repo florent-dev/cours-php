@@ -23,8 +23,8 @@ class StructureController extends SController
 
     public function viewStructures(): void
     {
-        $title = 'Liste des structures';
         $structures = $this->findAll();
+        $struct=true;
 
         $secteurs = $this->_secteurManager->findAll(\PDO::FETCH_ASSOC);
 
@@ -43,7 +43,7 @@ class StructureController extends SController
 
     public function editorStructure($id): void
     {
-        $structure = $this->findById($id);
+        $structure = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 
         if (null === $structure) {

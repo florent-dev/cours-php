@@ -21,6 +21,7 @@ class EntrepriseController extends SController
     public function viewEntreprises(): void
     {
         $structures = $this->findAll();
+        $struct=false;
 
         require(__DIR__ . '/../View/viewStructures.php');
     }
@@ -34,8 +35,6 @@ class EntrepriseController extends SController
 
     public function editorEntreprise($id): void
     {
-        var_dump($id);
-        exit;
         $structure = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 
