@@ -13,9 +13,13 @@ if ($environnement === 'dev') {
 require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/SecteurController.php');
 require_once(__DIR__ . '/Controller/StructureController.php');
+require_once(__DIR__ . '/Controller/EntrepriseController.php');
+require_once(__DIR__ . '/Controller/AssociationController.php');
 
 use mvc\Controller\StructureController;
 use mvc\Controller\SecteurController;
+use mvc\Controller\EntrepriseController;
+use mvc\Controller\AssociationController;
 
 try {
 
@@ -94,6 +98,98 @@ try {
                     $error = 'Erreur : action non reconnue';
                     break;
             }
+        } elseif (stripos($_GET['action'], 'Entreprise')) {
+            $controler = new EntrepriseController();
+            switch ($_GET['action']) {
+                case 'viewEntreprise':
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler->viewEntreprise($_GET['id']);
+                    } else {
+                        $error = 'Erreur : mauvais identifiant';
+                    }
+                    break;
+                case 'viewEntreprises':
+                    $controler->viewEntreprises();
+                    break;
+                case 'editorEntreprise':
+                    $idStructure = (isset($_GET['id'])) ? $_GET['id'] : null;
+                    if (isset($_GET['id']) && $idStructure <= 0) {
+                        $error = 'Erreur : mauvais identifiant';
+                    } else {
+                        $controler->editorEntreprise($idStructure);
+                    }
+                    break;
+                case 'createEntreprise':
+                    if (isset($_POST['libelle'])) {
+                        $controler->createEntreprise();
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                case 'updateEntreprise':
+                    if (isset($_POST['id'])) {
+                        $controler->updateEntreprise($_POST['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                case 'deleteEntreprise':
+                    if (isset($_GET['id'])) {
+                        $controler->deleteEntreprise($_GET['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                default :
+                    $error = 'Erreur : action non reconnue';
+                    break;
+            }
+        } elseif (stripos($_GET['action'], 'Association')) {
+            $controler = new AssociationController();
+            switch ($_GET['action']) {
+                case 'viewAssociation':
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        $controler->viewAssociation($_GET['id']);
+                    } else {
+                        $error = 'Erreur : mauvais identifiant';
+                    }
+                    break;
+                case 'viewAssociations':
+                    $controler->viewAssociations();
+                    break;
+                case 'editorAssociation':
+                    $idStructure = (isset($_GET['id'])) ? $_GET['id'] : null;
+                    if (isset($_GET['id']) && $idStructure <= 0) {
+                        $error = 'Erreur : mauvais identifiant';
+                    } else {
+                        $controler->editorAssociation($idStructure);
+                    }
+                    break;
+                case 'createAssociation':
+                    if (isset($_POST['libelle'])) {
+                        $controler->createAssociation();
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                case 'updateAssociation':
+                    if (isset($_POST['id'])) {
+                        $controler->updateAssociation($_POST['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                case 'deleteAssociation':
+                    if (isset($_GET['id'])) {
+                        $controler->deleteAssociation($_GET['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
+                default :
+                    $error = 'Erreur : action non reconnue';
+                    break;
+            }
         } else {
             $error = 'Erreur : action non reconnue';
         }
@@ -102,7 +198,8 @@ try {
         $controler->viewHome();
     }
 
-} catch (Exception $e) {
+} catch
+(Exception $e) {
     $error = 'Error ' . $e->getCode() . ' : ' . $e->getMessage() . '' . str_replace('\n', '', $e->getTraceAsString());
 }
 

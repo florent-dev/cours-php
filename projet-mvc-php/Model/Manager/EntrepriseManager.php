@@ -3,11 +3,10 @@
 namespace mvc\Model\Manager;
 
 require_once('PDOManager.php');
-require_once(__DIR__ . '/../Entities/Structure.php');
+require_once(__DIR__ . '/../Entities/Entreprise.php');
 require_once(__DIR__ . '/../Entities/Entity.php');
 
-use Model\Entities\Structure;
-use Model\Entity\Association;
+use Model\Entity\Entreprise;
 use mvc\Model\Entities\Entity;
 use \PDOStatement;
 
@@ -16,12 +15,12 @@ class EntrepriseManager extends PDOManager
     public function findById(int $id): ?Entity
     {
         $stmt = $this->executePrepare('SELECT * FROM structure WHERE id=:id', ['id' => $id]);
-        $structure = $stmt->fetch();
+        $entreprise = $stmt->fetch();
 
-        if (!$structure) return null;
+        if (!$entreprise) return null;
 
-        return new Association($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'],
-            $structure['ESTASSO'], $structure['NB_ACTIONNAIRES']);
+        return new Entreprise($entreprise['ID'], $entreprise['NOM'], $entreprise['RUE'], $entreprise['CP'], $entreprise['VILLE'],
+            $entreprise['ESTASSO'], $entreprise['NB_ACTIONNAIRES']);
     }
 
     public function find(): PDOStatement
@@ -33,13 +32,13 @@ class EntrepriseManager extends PDOManager
     public function findAll(int $pdoFecthMode): array
     {
         $stmt = $this->find();
-        $structures = $stmt->fetchAll($pdoFecthMode);
+        $entreprises = $stmt->fetchAll($pdoFecthMode);
 
         $entrepriseEntities = [];
-        foreach ($structures as $structure) {
-            if ($structure['ESTASSO'] == 0) {
-                $entrepriseEntities[] = new Structure($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'],
-                    $structure['ESTASSO'], $structure['NB_ACTIONNAIRES']);
+        foreach ($entreprises as $entreprise) {
+            if ($entreprise['ESTASSO'] == 0) {
+                $entrepriseEntities[] = new Entreprise($entreprise['ID'], $entreprise['NOM'], $entreprise['RUE'], $entreprise['CP'], $entreprise['VILLE'],
+                    $entreprise['ESTASSO'], $entreprise['NB_ACTIONNAIRES']);
             }
         }
 

@@ -3,10 +3,9 @@
 namespace mvc\Model\Manager;
 
 require_once('PDOManager.php');
-require_once(__DIR__ . '/../Entities/Structure.php');
+require_once(__DIR__ . '/../Entities/Association.php');
 require_once(__DIR__ . '/../Entities/Entity.php');
 
-use Model\Entities\Structure;
 use Model\Entity\Association;
 use mvc\Model\Entities\Entity;
 use \PDOStatement;
@@ -16,12 +15,12 @@ class AssociationManager extends PDOManager
     public function findById(int $id): ?Entity
     {
         $stmt = $this->executePrepare('SELECT * FROM structure WHERE id=:id', [ 'id' => $id]);
-        $structure = $stmt->fetch();
+        $association = $stmt->fetch();
 
-        if (!$structure) return null;
+        if (!$association) return null;
 
-        return new Association($structure['ID'],$structure['NOM'],$structure['RUE'],$structure['CP'],$structure['VILLE'],
-            $structure['ESTASSO'], $structure['NB_DONATEURS']);
+        return new Association($association['ID'],$association['NOM'],$association['RUE'],$association['CP'],$association['VILLE'],
+            $association['ESTASSO'], $association['NB_DONATEURS']);
     }
 
     public function find(): PDOStatement
@@ -33,13 +32,13 @@ class AssociationManager extends PDOManager
     public function findAll(int $pdoFecthMode): array
     {
         $stmt = $this->find();
-        $structures = $stmt->fetchAll($pdoFecthMode);
+        $associations = $stmt->fetchAll($pdoFecthMode);
 
         $associationEntities = [];
-        foreach($structures as $structure) {
-            if($structure['ESTASSO']==1) {
-                $associationEntities[] = new Structure($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'],
-                    $structure['ESTASSO'], $structure['NB_DONATEURS']);
+        foreach($associations as $association) {
+            if($association['ESTASSO']==1) {
+                $associationEntities[] = new Association($association['ID'], $association['NOM'], $association['RUE'], $association['CP'], $association['VILLE'],
+                    $association['ESTASSO'], $association['NB_DONATEURS']);
             }
         }
 

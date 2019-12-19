@@ -11,6 +11,8 @@
     <ul class="list-group">
         <a href='index.php?action=viewSecteurs'><li class="list-group-item">Gérer les secteurs</li></a>
         <a href='index.php?action=viewStructures'><li class="list-group-item">Gérer les structures</li></a>
+        <a href='index.php?action=viewAssociations'><li class="list-group-item">Gérer les associations</li></a>
+        <a href='index.php?action=viewEntreprises'><li class="list-group-item">Gérer les entreprises</li></a>
     </ul>
 </div>
 

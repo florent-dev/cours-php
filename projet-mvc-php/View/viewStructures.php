@@ -9,7 +9,7 @@
 
     <h2>Liste des structures</h2>
     <?php foreach ($structures as $structure) { ?>
-        <a href='index.php?action=viewStructure&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-dark mt-2"><?= $structure->getNom(); ?></button></a>
+        <a href='index.php?action=<?= (($structure->getEstAssocie()) ? "viewAssociation" : "viewEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-dark mt-2"><?= $structure->getNom(); ?></button></a>
     <?php } ?>
 
     <p class="mt-4">
