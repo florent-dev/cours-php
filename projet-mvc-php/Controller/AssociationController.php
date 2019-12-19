@@ -31,47 +31,49 @@ class AssociationController extends SController
 
     public function editorAssociation($id): void
     {
-        $secteur = (null !== $id) ? $this->findById($id) : null;
+        var_dump($id);
+        exit;
+        $structure = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 
-        if (null === $secteur) {
-            $title = 'Créer le secteur';
-            $action .= 'createSecteur';
+        if (null === $structure) {
+            $title = 'Créer l\'association';
+            $action .= 'createAssociation';
         } else {
-            $title = 'Modifier le secteur n°' . $secteur->getId();
-            $action .= 'updateSecteur&id=' . $secteur->getId();
+            $title = 'Modifier l\'association n°' . $structure->getId();
+            $action .= 'updateAssociation&id=' . $structure->getId();
         }
 
-        require(__DIR__ . '/../View/editorSecteur.php');
+        require(__DIR__ . '/../View/editorStructure.php');
     }
 
     public function createAssociation(): void
     {
         $structure = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs']);
         $this->insert($structure);
-        header('Location: index.php?action=viewSecteurs');
+        header('Location: index.php?action=viewAssociations');
     }
 
     public function updateAssociation($id): void
     {
-        $secteur = $this->findById($id);
+        $association = $this->findById($id);
 
-        if (null !== $secteur) {
-            $secteur->setLibelle($_POST['libelle']);
-            $this->update($secteur);
+        if (null !== $association) {
+            $association->setLibelle($_POST['libelle']);
+            $this->update($association);
         }
 
-        header('Location: index.php?action=viewSecteurs');
+        header('Location: index.php?action=viewAssociations');
     }
 
     public function deleteAssociation($id): void
     {
-        $secteur = $this->findById($id);
+        $association = $this->findById($id);
 
-        if (null !== $secteur) {
-            $this->delete($secteur);
+        if (null !== $association) {
+            $this->delete($association);
         }
 
-        header('Location: index.php?action=viewSecteurs');
+        header('Location: index.php?action=viewAssociations');
     }
 }

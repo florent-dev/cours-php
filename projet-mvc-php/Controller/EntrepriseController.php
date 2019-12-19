@@ -34,47 +34,49 @@ class EntrepriseController extends SController
 
     public function editorEntreprise($id): void
     {
-        $secteur = (null !== $id) ? $this->findById($id) : null;
+        var_dump($id);
+        exit;
+        $structure = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 
-        if (null === $secteur) {
-            $title = 'Créer le secteur';
-            $action .= 'createSecteur';
+        if (null === $structure) {
+            $title = 'Créer l\'entreprise';
+            $action .= 'createEntreprise';
         } else {
-            $title = 'Modifier le secteur n°' . $secteur->getId();
-            $action .= 'updateSecteur&id=' . $secteur->getId();
+            $title = 'Modifier l\'entreprise n°' . $structure->getId();
+            $action .= 'updateEntreprise&id=' . $structure->getId();
         }
 
-        require(__DIR__ . '/../View/editorSecteur.php');
+        require(__DIR__ . '/../View/editorStructure.php');
     }
 
     public function createEntreprise(): void
     {
-        $structure = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_actionnaires']);
-        $this->insert($structure);
-        header('Location: index.php?action=viewSecteurs');
+        $entreprise = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_actionnaires']);
+        $this->insert($entreprise);
+        header('Location: index.php?action=viewEntreprises');
     }
 
     public function updateEntreprise($id): void
     {
-        $secteur = $this->findById($id);
+        $entreprise = $this->findById($id);
 
-        if (null !== $secteur) {
-            $secteur->setLibelle($_POST['libelle']);
-            $this->update($secteur);
+        if (null !== $entreprise) {
+            $entreprise->setLibelle($_POST['libelle']);
+            $this->update($entreprise);
         }
 
-        header('Location: index.php?action=viewSecteurs');
+        header('Location: index.php?action=viewEntreprises');
     }
 
     public function deleteEntreprise($id): void
     {
-        $secteur = $this->findById($id);
+        $entreprise = $this->findById($id);
 
-        if (null !== $secteur) {
-            $this->delete($secteur);
+        if (null !== $entreprise) {
+            $this->delete($entreprise);
         }
 
-        header('Location: index.php?action=viewSecteurs');
+        header('Location: index.php?action=viewEntreprises');
     }
 }

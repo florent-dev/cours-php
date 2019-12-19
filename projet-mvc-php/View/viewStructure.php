@@ -19,8 +19,8 @@
             <div>Nombre de d'actionnaires : <?= $structure->getNbactionnaires() ?></div>
         <?php } ?>
 
-        <button type="button" class="btn btn-sm btn-info">Modifier</button>
-        <button type="button" class="btn btn-sm btn-danger">Supprimer</button>
+        <a href='index.php?action=<?= (($structure->getEstAssocie()) ? "editorAssociation" : "editorEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-info">Modifier</button></a>
+        <a href='index.php?action=<?= (($structure->getEstAssocie()) ? "deleteAssociation" : "deleteEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-danger">Supprimer</button></a>
 
         <hr>
 
