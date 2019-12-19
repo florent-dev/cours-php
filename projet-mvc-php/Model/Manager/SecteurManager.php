@@ -24,7 +24,6 @@ class SecteurManager extends PDOManager
     public function find(): PDOStatement
     {
         $stmt = $this->executePrepare('SELECT * FROM secteur', []);
-
         return $stmt;
     }
 

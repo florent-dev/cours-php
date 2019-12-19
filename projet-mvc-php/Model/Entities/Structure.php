@@ -15,10 +15,8 @@ class Structure extends Entity
     private $_cp;
     private $_ville;
     private $_estAssocie;
-    private $_nbDonateurs;
-    private $_nbActionnaires;
 
-    public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie, $nbDonateurs, $nbActionnaires)
+    public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie)
     {
         $this->_id = $id;
         $this->_nom = $nom;
@@ -26,8 +24,6 @@ class Structure extends Entity
         $this->_cp = $cp;
         $this->_ville = $ville;
         $this->_estAssocie = $estAssocie;
-        $this->_nbDonateurs = $nbDonateurs;
-        $this->_nbActionnaires = $nbActionnaires;
     }
 
     /**
@@ -60,22 +56,6 @@ class Structure extends Entity
     public function getNom()
     {
         return $this->_nom;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNbDonateurs()
-    {
-        return $this->_nbDonateurs;
-    }
-
-    /**
-     * @return int
-     */
-    public function getNbActionnaires()
-    {
-        return $this->_nbActionnaires;
     }
 
     /**
@@ -124,22 +104,6 @@ class Structure extends Entity
     public function setNom($nom)
     {
         $this->_nom = $nom;
-    }
-
-    /**
-     * @param int $nbDonnateurs
-     */
-    public function setNbDonateurs($nbDonnateurs)
-    {
-        $this->_nbDonateurs = $nbDonnateurs;
-    }
-
-    /**
-     * @param int $nbActionnaires
-     */
-    public function setNbActionnaires($nbActionnaires)
-    {
-        $this->_nbActionnaires = $nbActionnaires;
     }
 
     /**

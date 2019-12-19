@@ -8,9 +8,11 @@ use mvc\Model\Entities\Entity;
 
 class Secteur extends Entity
 {
+    //Attributs
     private $_id;
     private $_libelle;
 
+    //Constructeur
     public function __construct($id, $libelle)
     {
         $this->_id = $id;
