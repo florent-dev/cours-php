@@ -14,7 +14,7 @@
                 <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                 <div class="col-sm-10">
                     <input required type="text" class="form-control" placeholder="Nom de la structure" name="nom" id="nom"
-                        <?php if (isset($structure)) echo "value='$structure->getNom()'"; ?> />
+                        <?php if (isset($structure)) echo 'value="'.$structure->getNom().'";' ?> />
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 <label for="rue" class="col-sm-2 col-form-label">Rue</label>
                 <div class="col-sm-10">
                     <input type="number" class="form-control" placeholder="Rue" name="rue" id="rue"
-                        <?php if (isset($structure)) echo "value='$structure->getRue()'"; ?> />
+                        <?php if (isset($structure)) echo 'value="'.$structure->getRue().'";' ?> />
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
                 <div class="col-sm-10">
                     <input required type="text" class="form-control" placeholder="Code postal" name="cp" id="cp"
                            minlength="5" maxlength="5"
-                        <?php if (isset($structure)) echo "value='$structure->getCp()'"; ?> />
+                        <?php if (isset($structure)) echo 'value="'.$structure->getCp().'";' ?> />
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                 <label for="ville" class="col-sm-2 col-form-label">Ville</label>
                 <div class="col-sm-10">
                     <input required type="text" class="form-control" placeholder="Ville" name="ville" id="ville"
-                        <?php if (isset($structure)) echo "value='$structure->getVille()'"; ?> />
+                        <?php if (isset($structure)) echo 'value="'.$structure->getVille().'";' ?> />
                 </div>
             </div>
 
@@ -66,14 +66,13 @@
                 </div>
             <?php } ?>
 
-            <!--A changer-->
             <?php if ( is_null($structure) || $structure->getEstasso()) { ?>
                 <div class="form-group row">
                     <label for="nb_donateurs" class="col-sm-2 col-form-label">Nb de donateurs (si association)</label>
                     <div class="col-sm-10">
                         <input required type="number" class="form-control" placeholder="Nombre de donateurs"
                                name="nb_donateurs" id="nb_donateurs" value="0" min="0"
-                            <?php if ( !is_null($structure) ) echo "value='$structure->getNbDonateurs()'"; ?> />
+                            <?php if (isset($structure)) echo 'value="'.$structure->getNbDonateurs().'";' ?> />
                     </div>
                 </div>
             <?php } ?>
@@ -84,7 +83,7 @@
                     <div class="col-sm-10">
                         <input required type="number" class="form-control" placeholder="Nombre d'actionnaires"
                                name="nb_actionnaires" id="nb_actionnaires" value="0" min="0"
-                            <?php if (!is_null($structure)) echo "value='$structure->getNbActionnaires()'"; ?> />
+                            <?php if (isset($structure)) echo 'value="'.$structure->getNbActionnaires().'";' ?> />
                     </div>
                 </div>
             <?php } ?>

@@ -63,9 +63,11 @@ class StructureController extends SController
     public function createStructure(): void
     {
         if ( isset($_POST['estasso']) ) {
-            $structure = ($_POST['estasso'] === '0')
-                ? new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'])
-                : new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_actionnaires'])
+            $_POST['estasso'] = (int) $_POST['estasso'];
+            var_dump($_POST['estasso']);
+            $structure = ($_POST['estasso'] === 1)
+                ? new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], '1', $_POST['nb_actionnaires'])
+                : new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], '0', $_POST['nb_donateurs'])
             ;
             $this->insert($structure);
         }
@@ -83,7 +85,7 @@ class StructureController extends SController
             $structure->setVille($_POST['ville']);
             $structure->setEstasso($_POST['estasso']);
 
-            ($structure->getEstasso === '1') ? $structure->setNbDonateurs($_POST['nb_donateurs']) : $structure->setNbActionnaires($_POST['nb_actionnaires']);
+            ($structure->getEstasso() == 1) ? $structure->setNbDonateurs($_POST['nb_donateurs']) : $structure->setNbActionnaires($_POST['nb_actionnaires']);
 
             $this->update($structure);
         }

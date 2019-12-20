@@ -4,16 +4,11 @@
     <list default="true" id="3da3d773-a7fd-46aa-9cd8-f8380151bcb0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-mvc-php/Controller/StructureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Controller/StructureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Association.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Association.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Entreprise.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Structure.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Structure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/AssociationManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/AssociationManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/EntrepriseManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/EntrepriseManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/StructureManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/StructureManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-mvc-php/View/editorStructure.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/View/editorStructure.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-mvc-php/View/viewStructure.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/View/viewStructure.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projet-mvc-php/View/viewStructures.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/View/viewStructures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/conf/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/conf/config.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +86,7 @@
       <workItem from="1576743679769" duration="70000" />
       <workItem from="1576766649888" duration="464000" />
       <workItem from="1576827551751" duration="7734000" />
-      <workItem from="1576836869442" duration="2245000" />
+      <workItem from="1576836869442" duration="6629000" />
     </task>
     <servers />
   </component>
@@ -146,13 +141,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576836878890" />
-    <state x="656" y="257" width="737" height="596" key="find.popup" timestamp="1576838374101">
+    <state x="656" y="257" width="737" height="596" key="find.popup" timestamp="1576857541015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="257" width="737" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576838374101" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576835194364">
+    <state x="656" y="257" width="737" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576857541015" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576856495347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576835194364" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1576856495347" />
   </component>
 </project>

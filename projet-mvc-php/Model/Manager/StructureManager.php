@@ -45,13 +45,16 @@ class StructureManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        if ($e->getEstasso() === '1') {
+        var_dump($e->getEstasso());
+        if ($e->getEstasso() == '1') {
             $nbDonateurs = $e->getNbDonateurs();
             $nbActionnaires = null;
         } else {
             $nbDonateurs = null;
             $nbActionnaires = $e->getNbActionnaires();
         }
+
+        var_dump($e->getEstasso());
 
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs, :nb_actionnaires)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
@@ -63,7 +66,7 @@ class StructureManager extends PDOManager
 
     public function update(Entity $e): PDOStatement
     {
-        if ($e->getEstasso() === '1') {
+        if ($e->getEstasso() == 1) {
             $nbDonateurs = $e->getNbDonateurs();
             $nbActionnaires = null;
         } else {
@@ -89,7 +92,7 @@ class StructureManager extends PDOManager
     }
 
     private function buildStructure($structure) {
-        return ($structure['ESTASSO'] === '1')
+        return ($structure['ESTASSO'] == 1)
             ? new Association($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'], $structure['ESTASSO'], $structure['NB_DONATEURS'])
             : new Entreprise($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'], $structure['ESTASSO'], $structure['NB_ACTIONNAIRES'])
         ;

@@ -61,11 +61,11 @@ abstract class Structure extends Entity
     }
 
     /**
-     * @return bool
+     * @return int
      */
     public function getEstasso()
     {
-        return (bool) $this->_estasso;
+        return (int) $this->_estasso;
     }
 
     /**
@@ -109,7 +109,7 @@ abstract class Structure extends Entity
     }
 
     /**
-     * @param bool $estAssocie
+     * @param int $estAssocie
      */
     public function setEstasso($estAssocie)
     {
