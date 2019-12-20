@@ -7,6 +7,8 @@ require_once(__DIR__ . '/../Entities/Structure.php');
 require_once(__DIR__ . '/../Entities/Entity.php');
 
 use Model\Entities\Structure;
+use Model\Entity\Association;
+use Model\Entity\Entreprise;
 use mvc\Model\Entities\Entity;
 use \PDOStatement;
 
@@ -14,13 +16,12 @@ class StructureManager extends PDOManager
 {
     public function findById(int $id): ?Entity
     {
-        $stmt = $this->executePrepare('SELECT * FROM structure WHERE id=:id', [ 'id' => $id]);
-        $structure = $stmt->fetch();
+        $stmt = $this->executePrepare('SELECT * FROM structure WHERE id=:id', ['id' => $id]);
+        $datas = $stmt->fetch();
 
-        if (!$structure) return null;
+        if (!$datas) return null;
 
-        return new Structure($structure['ID'],$structure['NOM'],$structure['RUE'],$structure['CP'],$structure['VILLE'],
-            $structure['ESTASSO'], $structure['NB_DONATEURS'], $structure['NB_ACTIONNAIRES']);
+        return $this->buildStructure($datas);
     }
 
     public function find(): PDOStatement
@@ -32,12 +33,11 @@ class StructureManager extends PDOManager
     public function findAll(int $pdoFecthMode): array
     {
         $stmt = $this->find();
-        $structures = $stmt->fetchAll($pdoFecthMode);
+        $datasStructures = $stmt->fetchAll($pdoFecthMode);
 
         $structuresEntities = [];
-        foreach($structures as $structure) {
-            $accountsEntities[] = new Structure($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'],
-                $structure['ESTASSO'], $structure['NB_DONATEURS'], $structure['NB_ACTIONNAIRES']);
+        foreach($datasStructures as $datasStructure) {
+            $accountsEntities[] = $this->buildStructure($datasStructure);
         }
 
         return $accountsEntities;
@@ -45,9 +45,17 @@ class StructureManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
+        if ($e->getEstasso() === '1') {
+            $nbDonateurs = $e->getNbDonateurs();
+            $nbActionnaires = null;
+        } else {
+            $nbDonateurs = null;
+            $nbActionnaires = $e->getNbActionnaires();
+        }
+
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs, :nb_actionnaires)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
-            'ville' => $e->getVille(), 'estasso' => $e->getEstAssocie(), 'nb_donateurs' => $e->getNbDonateurs(), 'nb_actionnaires' => $e->getNbActionnaires());
+            'ville' => $e->getVille(), 'estasso' => $e->getEstasso(), 'nb_donateurs' => $nbDonateurs, 'nb_actionnaires' => $nbActionnaires);
         $res = $this->executePrepare($req, $params);
 
         return $res;
@@ -55,8 +63,16 @@ class StructureManager extends PDOManager
 
     public function update(Entity $e): PDOStatement
     {
+        if ($e->getEstasso() === '1') {
+            $nbDonateurs = $e->getNbDonateurs();
+            $nbActionnaires = null;
+        } else {
+            $nbDonateurs = null;
+            $nbActionnaires = $e->getNbActionnaires();
+        }
+
         $req = 'UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, estasso=:estasso, nb_donateurs=:nb_donateurs, nb_actionnaires=:nb_actionnaires WHERE id=:id';
-        $params = array('nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(), 'ville' => $e->getVille(), 'estasso' => $e->getEstAssocie(),
+        $params = array('nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(), 'ville' => $e->getVille(), 'estasso' => $e->getEstasso(),
             'nb_donateurs' => $e->getNbDonateurs(), 'nb_actionnaires' => $e->getNbActionnaires(), 'id' => $e->getId());
         $res = $this->executePrepare($req, $params);
 
@@ -70,5 +86,12 @@ class StructureManager extends PDOManager
         $res = $this->executePrepare($req, $params);
 
         return $res;
+    }
+
+    private function buildStructure($structure) {
+        return ($structure['ESTASSO'] === '1')
+            ? new Association($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'], $structure['ESTASSO'], $structure['NB_DONATEURS'])
+            : new Entreprise($structure['ID'], $structure['NOM'], $structure['RUE'], $structure['CP'], $structure['VILLE'], $structure['ESTASSO'], $structure['NB_ACTIONNAIRES'])
+        ;
     }
 }

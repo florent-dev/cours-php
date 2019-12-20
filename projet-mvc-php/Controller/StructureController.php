@@ -3,6 +3,8 @@
 namespace mvc\Controller;
 
 use Model\Entities\Structure;
+use Model\Entity\Association;
+use Model\Entity\Entreprise;
 use mvc\Model\Manager\SecteurManager;
 use mvc\Model\Manager\StructureManager;
 
@@ -49,6 +51,7 @@ class StructureController extends SController
         if (null === $structure) {
             $title = 'Créer la structure';
             $action .= 'createStructure';
+            $secteurs = $this->_secteurManager->findAll(\PDO::FETCH_ASSOC);
         } else {
             $title = 'Modifier la structure n°' . $structure->getId();
             $action .= 'updateStructure&id=' . $structure->getId();
@@ -59,22 +62,43 @@ class StructureController extends SController
 
     public function createStructure(): void
     {
-        $structure = new Structure(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires']);
-        $this->insert($structure);
+        if ( isset($_POST['estasso']) ) {
+            $structure = ($_POST['estasso'] === '0')
+                ? new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'])
+                : new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_actionnaires'])
+            ;
+            $this->insert($structure);
+        }
         header('Location: index.php?action=viewStructures');
     }
 
     public function updateStructure($id): void
     {
-        $structure = new Structure(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires']);
-        $this->insert($structure);
+        $structure = $this->findById($id);
+
+        if (null !== $structure) {
+            $structure->setNom($_POST['nom']);
+            $structure->setRue($_POST['rue']);
+            $structure->setCp($_POST['cp']);
+            $structure->setVille($_POST['ville']);
+            $structure->setEstasso($_POST['estasso']);
+
+            ($structure->getEstasso === '1') ? $structure->setNbDonateurs($_POST['nb_donateurs']) : $structure->setNbActionnaires($_POST['nb_actionnaires']);
+
+            $this->update($structure);
+        }
+
         header('Location: index.php?action=viewStructures');
     }
 
     public function deleteStructure($id): void
     {
-        $structure = new Structure(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs'], $_POST['nb_actionnaires']);
-        $this->insert($structure);
+        $structure = $this->findById($id);
+
+        if (null !== $structure) {
+            $this->delete($structure);
+        }
+
         header('Location: index.php?action=viewStructures');
     }
 }

@@ -49,7 +49,7 @@ class AssociationManager extends PDOManager
     {
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, null) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
-            'ville' => $e->getVille(), 'estasso' => $e->getEstAssocie(), 'nb_donateurs' => $e->getNbDonateurs());
+            'ville' => $e->getVille(), 'estasso' => $e->getEstasso(), 'nb_donateurs' => $e->getNbDonateurs());
         $res = $this->executePrepare($req, $params);
 
         return $res;

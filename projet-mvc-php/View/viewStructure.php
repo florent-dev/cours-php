@@ -3,7 +3,7 @@
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4"><?= (($structure->getEstAssocie()) ? 'Association' : 'Société') ?> <?= $structure->getNom() ?></h1>
+                <h1 class="display-4"><?= (($structure->getEstasso()) ? 'Association' : 'Société') ?> <?= $structure->getNom() ?></h1>
             </div>
         </div>
 
@@ -13,14 +13,14 @@
         <div>CP : <?= $structure->GetCp() ?></div>
         <div>Ville : <?= $structure->getVille() ?></div>
 
-        <?php if ($structure->getEstAssocie()) { ?>
+        <?php if ($structure->getEstasso()) { ?>
             <div>Nombre de donateurs :<?= $structure->getNbdonateurs() ?></div>
         <?php } else { ?>
             <div>Nombre de d'actionnaires : <?= $structure->getNbactionnaires() ?></div>
         <?php } ?>
 
-        <a href='index.php?action=<?= (($structure->getEstAssocie()) ? "editorAssociation" : "editorEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-info">Modifier</button></a>
-        <a href='index.php?action=<?= (($structure->getEstAssocie()) ? "deleteAssociation" : "deleteEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-danger">Supprimer</button></a>
+        <a href='index.php?action=<?= (($structure->getEstasso()) ? "editorAssociation" : "editorEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-info">Modifier</button></a>
+        <a href='index.php?action=<?= (($structure->getEstasso()) ? "deleteAssociation" : "deleteEntreprise" )?>&id=<?= $structure->getId() ?>'><button type="button" class="btn btn-sm btn-danger">Supprimer</button></a>
 
         <hr>
 

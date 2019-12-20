@@ -9,25 +9,15 @@
 
         <h2>Liste des structures</h2>
         <?php foreach ($structures as $structure) { ?>
-            <a href='index.php?action=<?= (($structure->getEstAssocie()) ? "viewAssociation" : "viewEntreprise") ?>&id=<?= $structure->getId() ?>'>
+            <a href='index.php?action=<?= (($structure->getEstasso()) ? "viewAssociation" : "viewEntreprise") ?>&id=<?= $structure->getId() ?>'>
                 <button type="button" class="btn btn-sm btn-dark mt-2"><?= $structure->getNom(); ?></button>
             </a>
         <?php } ?>
 
         <p class="mt-4">
-            <?php if ($struct) { ?>
-                <a href='index.php?action=editorStructure'>
-                    <button type="button" class="btn btn-info">Ajouter une structure</button>
-                </a>
-            <?php } else if ($structures[0]->getEstAssocie()) { ?>
-                <a href='index.php?action=editorAssociation'>
-                    <button type="button" class="btn btn-info">Ajouter une association</button>
-                </a>
-            <?php } else { ?>
-                <a href='index.php?action=editorEntreprise'>
-                    <button type="button" class="btn btn-info">Ajouter une entreprise</button>
-                </a>
-            <?php } ?>
+            <a href='index.php?action=editorStructure'>
+                <button type="button" class="btn btn-info">Ajouter une structure</button>
+            </a>
         </p>
 
         <hr>

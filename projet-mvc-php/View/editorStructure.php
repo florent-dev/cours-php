@@ -13,9 +13,8 @@
             <div class="form-group row">
                 <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                 <div class="col-sm-10">
-                    <input required type="text" class="form-control" placeholder="Nom de la structure" name="nom"
-                           id="nom"
-                        <?php if (isset($structure)) echo "value=<?=$structure->getNom()?>"; ?> />
+                    <input required type="text" class="form-control" placeholder="Nom de la structure" name="nom" id="nom"
+                        <?php if (isset($structure)) echo "value='$structure->getNom()'"; ?> />
                 </div>
             </div>
 
@@ -45,7 +44,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="secteurs" class="col-sm-2 col-form-label">Secteurs associés</label>
+                <label for="secteurs" class="col-sm-2 col-form-label">Secteur principal</label>
                 <div class="col-sm-10">
                     <select required class="form-control" name="secteurs" id="secteurs">
                         <?php foreach ($secteurs as $secteur) { ?>
@@ -55,7 +54,7 @@
                 </div>
             </div>
 
-            <?php if ($structure != null) { ?>
+            <?php if ( is_null($structure) ) { ?>
                 <div class="form-group row">
                     <label for="estasso" class="col-sm-2 col-form-label">Association ?</label>
                     <div class="col-sm-10">
@@ -68,29 +67,31 @@
             <?php } ?>
 
             <!--A changer-->
-            <?php if ($structure != null && $structure->getEstAssocie()) { ?>
+            <?php if ( is_null($structure) || $structure->getEstasso()) { ?>
                 <div class="form-group row">
                     <label for="nb_donateurs" class="col-sm-2 col-form-label">Nb de donateurs (si association)</label>
                     <div class="col-sm-10">
                         <input required type="number" class="form-control" placeholder="Nombre de donateurs"
                                name="nb_donateurs" id="nb_donateurs" value="0" min="0"
-                            <?php if (isset($structure)) echo "value='$structure->getNbDonateurs()'"; ?> />
+                            <?php if ( !is_null($structure) ) echo "value='$structure->getNbDonateurs()'"; ?> />
                     </div>
                 </div>
-                <!--A changer-->
-            <?php } else if($structure != null){ ?>
+            <?php } ?>
 
+            <?php if ( is_null($structure) || !$structure->getEstasso() ) { ?>
                 <div class="form-group row">
                     <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nb d'actionnaires (si société)</label>
                     <div class="col-sm-10">
                         <input required type="number" class="form-control" placeholder="Nombre d'actionnaires"
                                name="nb_actionnaires" id="nb_actionnaires" value="0" min="0"
-                            <?php if (isset($structure)) echo "value='$structure->getNbActionnaires()'"; ?> />
+                            <?php if (!is_null($structure)) echo "value='$structure->getNbActionnaires()'"; ?> />
                     </div>
                 </div>
             <?php } ?>
 
-            <input type="hidden" name="id" id="id" value="<?= $secteur->getId() ?>">
+            <?php if ( isset($structure) ) { ?>
+                <input type="hidden" name="id" id="id" value="<?= $structure->getId() ?>">
+            <?php } ?>
 
             <input type="submit" class="btn btn-primary mb-2" name="add" value="Ajouter la structure">
         </form>

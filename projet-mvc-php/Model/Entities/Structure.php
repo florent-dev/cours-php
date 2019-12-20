@@ -7,14 +7,16 @@ require_once 'Entity.php';
 use Model\Entity\Secteur;
 use mvc\Model\Entities\Entity;
 
-class Structure extends Entity
+abstract class Structure extends Entity
 {
+    public static $TYPESTRUCTURE = 'Structure';
+
     private $_id;
     private $_nom;
     private $_rue;
     private $_cp;
     private $_ville;
-    private $_estAssocie;
+    private $_estasso;
 
     public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie)
     {
@@ -23,7 +25,7 @@ class Structure extends Entity
         $this->_rue = $rue;
         $this->_cp = $cp;
         $this->_ville = $ville;
-        $this->_estAssocie = $estAssocie;
+        $this->_estasso = $estAssocie;
     }
 
     /**
@@ -32,14 +34,6 @@ class Structure extends Entity
     public function getVille()
     {
         return $this->_ville;
-    }
-
-    /**
-     * @return Secteur
-     */
-    public function getSecteur()
-    {
-        return $this->_secteur;
     }
 
     /**
@@ -69,9 +63,9 @@ class Structure extends Entity
     /**
      * @return bool
      */
-    public function getEstAssocie()
+    public function getEstasso()
     {
-        return $this->_estAssocie;
+        return (bool) $this->_estasso;
     }
 
     /**
@@ -117,9 +111,9 @@ class Structure extends Entity
     /**
      * @param bool $estAssocie
      */
-    public function setEstAssocie($estAssocie)
+    public function setEstasso($estAssocie)
     {
-        $this->_estAssocie = $estAssocie;
+        $this->_estasso = $estAssocie;
     }
 
     /**

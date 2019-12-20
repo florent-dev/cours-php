@@ -9,30 +9,31 @@ use Model\Entities\Structure;
 
 class Association extends Structure
 {
+    public static $TYPESTRUCTURE = 'Association';
 
-    //Attributs
-    private $nbdonateurs;
+    // Attributs
+    private $nbDonateurs;
 
-    //Constructeur
+    // Constructeur
     public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie, $nbDonateurs)
     {
         parent::__construct($id, $nom, $rue, $cp, $ville, $estAssocie);
-        $this->nbdonateurs=$nbDonateurs;
+        $this->nbDonateurs = $nbDonateurs;
     }
 
     /**
-     * @param mixed $nbdonateurs
+     * @param int $nbDonateurs
      */
-    public function setNbdonateurs($nbdonateurs): void
+    public function setNbDonateurs($nbDonateurs): void
     {
-        $this->nbdonateurs = $nbdonateurs;
+        $this->nbDonateurs = $nbDonateurs;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getNbdonateurs()
+    public function getNbDonateurs()
     {
-        return $this->nbdonateurs;
+        return $this->nbDonateurs;
     }
 }

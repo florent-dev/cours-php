@@ -9,29 +9,30 @@ use Model\Entities\Structure;
 
 class Entreprise extends Structure
 {
-    //Attributs
-    private $nbactionnaires;
+    public static $TYPESTRUCTURE = 'Entreprise';
+    // Attributs
+    private $nbActionnaires;
 
-    //Constructeur
-    public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie,$nbActionnaires)
+    // Constructeur
+    public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie, $nbActionnaires)
     {
         parent::__construct($id, $nom, $rue, $cp, $ville, $estAssocie);
-        $this->nbactionnaires=$nbActionnaires;
+        $this->nbActionnaires = $nbActionnaires;
     }
 
     /**
-     * @param mixed $nbactionnaires
+     * @param int $nbActionnaires
      */
-    public function setNbactionnaires($nbactionnaires): void
+    public function setNbActionnaires($nbActionnaires): void
     {
-        $this->nbactionnaires = $nbactionnaires;
+        $this->nbActionnaires = $nbActionnaires;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getNbactionnaires()
+    public function getNbActionnaires()
     {
-        return $this->nbactionnaires;
+        return $this->nbActionnaires;
     }
 }
