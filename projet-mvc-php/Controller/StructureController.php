@@ -2,14 +2,17 @@
 
 namespace mvc\Controller;
 
-use Model\Entities\Structure;
 use Model\Entity\Association;
 use Model\Entity\Entreprise;
+use Model\Entity\SecteursStructures;
 use mvc\Model\Manager\SecteurManager;
+use mvc\Model\Manager\SecteursStructuresManager;
 use mvc\Model\Manager\StructureManager;
 
 require_once('SController.php');
 require_once(__DIR__ . '/../Model/Manager/StructureManager.php');
+require_once(__DIR__ . '/../Model/Manager/SecteursStructuresManager.php');
+require_once(__DIR__ . '/../Model/Entities/SecteursStructures.php');
 
 use mvc\Controller\SController;
 
@@ -21,6 +24,7 @@ class StructureController extends SController
     {
         $this->manager = new StructureManager();
         $this->_secteurManager = new SecteurManager();
+        $this->_secteursStructuresManager = new SecteursStructuresManager();
     }
 
     public function viewStructures(): void
@@ -62,14 +66,16 @@ class StructureController extends SController
 
     public function createStructure(): void
     {
+
         if ( isset($_POST['estasso']) ) {
             $_POST['estasso'] = (int) $_POST['estasso'];
             var_dump($_POST['estasso']);
             $structure = ($_POST['estasso'] === 1)
                 ? new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], '1', $_POST['nb_actionnaires'])
-                : new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], '0', $_POST['nb_donateurs'])
-            ;
-            $this->insert($structure);
+                : new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], '0', $_POST['nb_donateurs']);
+            $res = $this->manager->insert($structure);
+            $secteursStructures = new SecteursStructures(null,$_POST['secteurs'],$res);
+            $resSecteur = $this->_secteursStructuresManager->insert($secteursStructures);
         }
         header('Location: index.php?action=viewStructures');
     }

@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3da3d773-a7fd-46aa-9cd8-f8380151bcb0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Controller/StructureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Controller/StructureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Structure.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Entities/Structure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/StructureManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/StructureManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/View/editorStructure.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/View/editorStructure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/View/viewStructure.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/View/viewStructure.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projet-mvc-php/View/viewStructures.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/View/viewStructures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/SecteursStructuresManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/Model/Manager/SecteursStructuresManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projet-mvc-php/conf/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/projet-mvc-php/conf/config.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +82,7 @@
       <workItem from="1576766649888" duration="464000" />
       <workItem from="1576827551751" duration="7734000" />
       <workItem from="1576836869442" duration="6629000" />
+      <workItem from="1576936738175" duration="13000" />
     </task>
     <servers />
   </component>

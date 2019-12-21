@@ -150,10 +150,33 @@ abstract class PDOManager
         }
     }
 
+    protected function executePrepareLastId(string $req, array $params)
+    {
+        $conn = null;
+        try {
+            $conn = $this->dbConnect();
+            $stmt = $conn->prepare($req);
+            $res = $stmt->execute($params);
+            $id = $conn->lastInsertId();
+            return $id;
+        } catch (PDOException $ex) {
+            throw $ex;
+        } finally {
+            if ($conn != null) {
+                $conn = null;
+            }
+        }
+    }
+
+    protected function lastId(){
+        $conn = $this->dbConnect();
+        return $conn->lastInsertId();
+    }
+
     public abstract function findById(int $id) : ?Entity;
     public abstract function find() : PDOStatement;
     public abstract function findAll(int $pdoFecthMode) : array;
-    public abstract function insert(Entity $e) : PDOStatement;
+    public abstract function insert(Entity $e);
     public abstract function update(Entity $e) : PDOStatement;
     public abstract function delete(Entity $e) : PDOStatement;
 }

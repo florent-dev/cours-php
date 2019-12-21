@@ -58,7 +58,7 @@ class SecteursStructures extends Entity
      */
     public function getIdStructure()
     {
-        return $this->idStructure;
+        return $this->_idStructure;
     }
 
     /**
