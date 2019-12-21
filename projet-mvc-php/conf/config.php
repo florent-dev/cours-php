@@ -6,5 +6,5 @@ $host = 'localhost';
 $encoding = 'utf8';
 $db = 'structures_lpg_1920';
 $user = 'root';
-$pass = ''; // à adapter selon son environnement
+$pass = 'root'; // à adapter selon son environnement
 $pdoErrorMode = \PDO::ERRMODE_EXCEPTION;

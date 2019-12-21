@@ -59,8 +59,8 @@ class SecteursStructuresManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        $req = 'INSERT INTO secteur_structure(id, id_secteur,id_structure) VALUES (:id, :id_secteur,:id_structure)';
-        $params = ['id' => $e->getId(), 'id_secteur' => $e->getIdSecteur(),'id_strcuture'=>$e->getIdStructure()];
+        $req = 'INSERT INTO secteurs_structures(id, id_secteur,id_structure) VALUES (:id, :id_secteur,:id_structure)';
+        $params = ['id' => $e->getId(), 'id_secteur' => $e->getIdSecteur(),'id_structure'=>$e->getIdStructure()];
         $res = $this->executePrepare($req, $params);
 
         return $res;

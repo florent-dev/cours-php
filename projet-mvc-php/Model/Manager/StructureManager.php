@@ -43,9 +43,8 @@ class StructureManager extends PDOManager
         return $structuresEntities;
     }
 
-    public function insert(Entity $e): PDOStatement
+    public function insert(Entity $e)
     {
-        var_dump($e->getEstasso());
         if ($e->getEstasso() == '1') {
             $nbDonateurs = $e->getNbDonateurs();
             $nbActionnaires = null;
@@ -54,13 +53,10 @@ class StructureManager extends PDOManager
             $nbActionnaires = $e->getNbActionnaires();
         }
 
-        var_dump($e->getEstasso());
-
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs, :nb_actionnaires)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
             'ville' => $e->getVille(), 'estasso' => $e->getEstasso(), 'nb_donateurs' => $nbDonateurs, 'nb_actionnaires' => $nbActionnaires);
-        $res = $this->executePrepare($req, $params);
-
+        $res = $this->executePrepareLastId($req, $params);
         return $res;
     }
 
