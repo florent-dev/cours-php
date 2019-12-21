@@ -26,7 +26,7 @@ class StructureController extends SController
     public function viewStructures(): void
     {
         $structures = $this->findAll();
-        $struct=true;
+        $terminologie = ['singulier' => 'structure', 'pluriel' => 'structures'];
 
         $secteurs = $this->_secteurManager->findAll(\PDO::FETCH_ASSOC);
 

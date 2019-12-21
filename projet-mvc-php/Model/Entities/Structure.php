@@ -9,8 +9,6 @@ use mvc\Model\Entities\Entity;
 
 abstract class Structure extends Entity
 {
-    public static $TYPESTRUCTURE = 'Structure';
-
     private $_id;
     private $_nom;
     private $_rue;

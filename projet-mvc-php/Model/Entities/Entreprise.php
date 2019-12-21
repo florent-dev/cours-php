@@ -9,7 +9,6 @@ use Model\Entities\Structure;
 
 class Entreprise extends Structure
 {
-    public static $TYPESTRUCTURE = 'Entreprise';
     // Attributs
     private $nbActionnaires;
 

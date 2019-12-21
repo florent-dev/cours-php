@@ -18,7 +18,7 @@ class AssociationController extends SController
     public function viewAssociations(): void
     {
         $structures = $this->findAll();
-        $struct=false;
+        $terminologie = ['singulier' => 'association', 'pluriel' => 'associations'];
 
         require(__DIR__ . '/../View/viewStructures.php');
     }

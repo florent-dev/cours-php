@@ -21,7 +21,7 @@ class EntrepriseController extends SController
     public function viewEntreprises(): void
     {
         $structures = $this->findAll();
-        $struct=false;
+        $terminologie = ['singulier' => 'entreprise', 'pluriel' => 'entreprises'];
 
         require(__DIR__ . '/../View/viewStructures.php');
     }

@@ -19,7 +19,6 @@
 
     <ul class="list-group">
         <a href='index.php?action=viewSecteurs'><li class="list-group-item">Retour sur la liste des secteurs</li></a>
-        <a href='index.php'><li class="list-group-item">Retourner sur l'accueil</li></a>
     </ul>
 </div>
 

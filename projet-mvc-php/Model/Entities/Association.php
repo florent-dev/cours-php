@@ -9,8 +9,6 @@ use Model\Entities\Structure;
 
 class Association extends Structure
 {
-    public static $TYPESTRUCTURE = 'Association';
-
     // Attributs
     private $nbDonateurs;
 

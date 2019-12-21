@@ -48,6 +48,13 @@ try {
                         $error = 'Erreur de paramètres';
                     }
                     break;
+                case 'deleteStructure':
+                    if (isset($_GET['id'])) {
+                        $controler->deleteStructure($_GET['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
                 default :
                     $error = 'Erreur : action non reconnue';
                     break;
@@ -133,13 +140,6 @@ try {
                         $error = 'Erreur de paramètres';
                     }
                     break;
-                case 'deleteEntreprise':
-                    if (isset($_GET['id'])) {
-                        $controler->deleteEntreprise($_GET['id']);
-                    } else {
-                        $error = 'Erreur de paramètres';
-                    }
-                    break;
                 default :
                     $error = 'Erreur : action non reconnue';
                     break;
@@ -179,13 +179,6 @@ try {
                         $error = 'Erreur de paramètres';
                     }
                     break;
-                case 'deleteAssociation':
-                    if (isset($_GET['id'])) {
-                        $controler->deleteAssociation($_GET['id']);
-                    } else {
-                        $error = 'Erreur de paramètres';
-                    }
-                    break;
                 default :
                     $error = 'Erreur : action non reconnue';
                     break;
@@ -194,8 +187,8 @@ try {
             $error = 'Erreur : action non reconnue';
         }
     } else {
-        $controler = new HomeController();
-        $controler->viewHome();
+        $controler = new StructureController();
+        $controler->viewStructures();
     }
 
 } catch

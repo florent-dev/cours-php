@@ -27,7 +27,6 @@
             <?php if (null !== $secteur) { ?>
                 <a href='index.php?action=viewSecteur&id=<?= $secteur->getId() ?>'><li class="list-group-item">Retour sur la fiche du secteur</li></a>
             <?php } ?>
-            <a href='index.php'><li class="list-group-item">Retourner sur l'accueil</li></a>
         </ul>
     </div>
 

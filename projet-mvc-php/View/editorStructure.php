@@ -94,17 +94,6 @@
 
             <input type="submit" class="btn btn-primary mb-2" name="add" value="Ajouter la structure">
         </form>
-
-        <hr>
-
-        <ul class="list-group">
-            <a href='index.php?action=viewSecteurs'>
-                <li class="list-group-item">Liste des secteurs</li>
-            </a>
-            <a href='index.php'>
-                <li class="list-group-item">Retourner sur l'accueil</li>
-            </a>
-        </ul>
     </div>
 
 <?php require 'templateFooter.php'; ?>

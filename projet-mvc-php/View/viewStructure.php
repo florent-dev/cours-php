@@ -28,9 +28,6 @@
             <a href='index.php?action=viewStructures'>
                 <li class="list-group-item">Retour sur la liste des structures</li>
             </a>
-            <a href='index.php'>
-                <li class="list-group-item">Retourner sur l'accueil</li>
-            </a>
         </ul>
     </div>
 
