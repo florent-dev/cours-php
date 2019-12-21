@@ -14,7 +14,7 @@
         <div>Ville : <?= $structure->getVille() ?></div>
 
         <?php if ($structure->getEstasso()) { ?>
-            <div>Nombre de donateurs :<?= $structure->getNbdonateurs() ?></div>
+            <div>Nombre de donateurs : <?= $structure->getNbdonateurs() ?></div>
         <?php } else { ?>
             <div>Nombre de d'actionnaires : <?= $structure->getNbactionnaires() ?></div>
         <?php } ?>

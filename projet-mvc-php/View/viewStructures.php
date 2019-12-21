@@ -1,18 +1,16 @@
 <?php require 'templateHeader.php'; ?>
 
     <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Gestion des <?= $terminologie['pluriel'] ?></h1>
-            </div>
-        </div>
+        <hr class="mt-5">
+        <h1>Liste des <?= $terminologie['pluriel'] ?></h1>
 
-        <h2>Liste des <?= $terminologie['pluriel'] ?></h2>
         <?php foreach ($structures as $structure) { ?>
             <a href='index.php?action=viewStructure&id=<?= $structure->getId() ?>'>
                 <button type="button" class="btn btn-sm btn-dark mt-2"><?= $structure->getNom(); ?></button>
             </a>
         <?php } ?>
+
+        <hr class="mb-5">
 
         <p class="mt-4">
             <a href='index.php?action=editorStructure'>
