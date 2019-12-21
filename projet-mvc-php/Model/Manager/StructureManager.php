@@ -6,7 +6,7 @@ require_once('PDOManager.php');
 require_once(__DIR__ . '/../Entities/Structure.php');
 require_once(__DIR__ . '/../Entities/Entity.php');
 
-use Model\Entities\Structure;
+
 use Model\Entity\Association;
 use Model\Entity\Entreprise;
 use mvc\Model\Entities\Entity;
@@ -37,10 +37,10 @@ class StructureManager extends PDOManager
 
         $structuresEntities = [];
         foreach($datasStructures as $datasStructure) {
-            $accountsEntities[] = $this->buildStructure($datasStructure);
+            $structuresEntities[] = $this->buildStructure($datasStructure);
         }
 
-        return $accountsEntities;
+        return $structuresEntities;
     }
 
     public function insert(Entity $e): PDOStatement
