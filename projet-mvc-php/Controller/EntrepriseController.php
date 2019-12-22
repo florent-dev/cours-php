@@ -64,11 +64,14 @@ class EntrepriseController extends SController
 
         if (isset($_POST['secteurs'])) {
             if (count($_POST['secteurs']) > 0) {
+
+                // On insert l'entreprise puis après ça les secteurs liés
                 $idStructureInserted = $this->insert($entreprise);
                 foreach ($_POST['secteurs'] as $secteurId) {
                     $secteurStructure = new SecteursStructures(null, $secteurId, $idStructureInserted);
                     $this->_secteursStructuresManager->insert($secteurStructure);
                 }
+
                 header('Location: index.php?action=viewEntreprises');
                 return;
             }
@@ -89,6 +92,7 @@ class EntrepriseController extends SController
             $entreprise->setNbActionnaires($_POST['nb_actionnaires']);
             $this->update($entreprise);
 
+            // Mise à jour des secteurs de la structure
             $this->_secteursStructuresManager->deleteByIdStructure($entreprise->getId());
 
             foreach ($_POST['secteurs'] as $secteurId) {

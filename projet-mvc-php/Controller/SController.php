@@ -56,9 +56,8 @@ abstract class SController
 
     /**
      * @param Entity $e
-     * @return int|null
      */
-    public function insert(Entity $e): ?int
+    public function insert(Entity $e)
     {
         return ($this->getManager()->insert($e));
     }

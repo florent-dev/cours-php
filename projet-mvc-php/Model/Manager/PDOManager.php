@@ -11,8 +11,6 @@ use \PDOException;
 
 abstract class PDOManager
 {
-    /*private string $host, $db, $encoding, $user, $pass;
-    private int $pdoErrorMode;*/
     private $host, $db, $encoding, $user, $pass;
     private $pdoErrorMode;
 
@@ -125,6 +123,9 @@ abstract class PDOManager
         $this->pdoErrorMode = $pdoErrorMode;
     }
 
+    /**
+     * @return PDO
+     */
     protected function dbConnect() : PDO
     {
         $conn = new PDO("mysql:host=$this->host;dbname=$this->db;charset=$this->encoding", $this->user, $this->pass);
@@ -132,6 +133,12 @@ abstract class PDOManager
         return $conn;
     }
 
+    /**
+     * Insertion
+     * @param string $req
+     * @param array $params
+     * @return PDOStatement
+     */
     protected function executePrepare(string $req, array $params) : PDOStatement {
         $conn = null;
         try {
@@ -150,6 +157,12 @@ abstract class PDOManager
         }
     }
 
+    /**
+     * Insert et retourne le dernier ID
+     * @param string $req
+     * @param array $params
+     * @return int
+     */
     protected function executePrepareLastId(string $req, array $params): int
     {
         $conn = null;
@@ -168,6 +181,10 @@ abstract class PDOManager
         }
     }
 
+    /**
+     * Dernier ID inseré
+     * @return int
+     */
     protected function lastId(): int {
         $conn = $this->dbConnect();
         return $conn->lastInsertId();

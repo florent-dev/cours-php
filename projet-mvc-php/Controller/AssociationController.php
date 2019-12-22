@@ -32,7 +32,8 @@ class AssociationController extends SController
 
     public function viewAssociation($id): void
     {
-        $structure = $this->findById($id);
+        $association = $this->findById($id);
+        $linkedSecteurs = $this->_secteursStructuresManager->getIdSecteursByIdStructure($association->getId());
 
         require(__DIR__ . '/../View/viewAssociation.php');
     }
@@ -61,11 +62,14 @@ class AssociationController extends SController
 
         if (isset($_POST['secteurs'])) {
             if (count($_POST['secteurs']) > 0) {
+
+                // On insert l'association puis après ça les secteurs liés
                 $idStructureInserted = $this->insert($association);
                 foreach ($_POST['secteurs'] as $secteurId) {
                     $secteurStructure = new SecteursStructures(null, $secteurId, $idStructureInserted);
                     $this->_secteursStructuresManager->insert($secteurStructure);
                 }
+
                 header('Location: index.php?action=viewAssociations');
                 return;
             }
@@ -86,6 +90,7 @@ class AssociationController extends SController
             $association->setNbDonateurs($_POST['nb_donateurs']);
             $this->update($association);
 
+            // Mise à jour des secteurs de la structure
             $this->_secteursStructuresManager->deleteByIdStructure($association->getId());
 
             foreach ($_POST['secteurs'] as $secteurId) {
