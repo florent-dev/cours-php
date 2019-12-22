@@ -1,3 +1,4 @@
+<?php $title = 'Accueil'; ?>
 <?php require 'templateHeader.php'; ?>
 
 <div class="container">

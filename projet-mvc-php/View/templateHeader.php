@@ -1,6 +1,6 @@
 <?php
 if (!isset($title)) {
-    $title = 'Nom du site';
+    $title = 'Accueil';
 }
 ?>
 
@@ -26,6 +26,9 @@ if (!isset($title)) {
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?action=viewSecteurs">Secteurs</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=viewStructures">Toutes les structures</a>
             </li>

@@ -1,3 +1,4 @@
+<?php $title = 'Détail d\'une structure'; ?>
 <?php require 'templateHeader.php'; ?>
 
     <div class="container">

@@ -1,3 +1,4 @@
+<?php $title = 'Editeur de structure'; ?>
 <?php require 'templateHeader.php'; ?>
 
     <div class="container">

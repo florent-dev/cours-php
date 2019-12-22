@@ -1,3 +1,4 @@
+<?php $title = 'Détail d\'un secteur'; ?>
 <?php require 'templateHeader.php'; ?>
 
 <div class="container">

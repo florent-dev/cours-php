@@ -1,3 +1,4 @@
+<?php $title = 'Editeur de secteur'; ?>
 <?php require 'templateHeader.php'; ?>
 
     <div class="container">

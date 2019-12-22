@@ -12,7 +12,7 @@ class SecteursStructuresManager extends PDOManager
 {
     public function findById(int $id): ?Entity
     {
-        $stmt = $this->executePrepare('SELECT * FROM secteurs_structures WHERE id=:id', ['id' => $id]);
+        $stmt = $this->executePrepare('SELECT * FROM secteurs_structures WHERE ID=:id', ['id' => $id]);
         $datas = $stmt->fetch();
 
         if (!$datas) return null;
@@ -22,7 +22,7 @@ class SecteursStructuresManager extends PDOManager
 
     public function findByIdSecteur(int $idSecteur): ?Entity
     {
-        $stmt = $this->executePrepare('SELECT * FROM secteurs_structures WHERE id_secteur=:idSecteur', ['idSecteur' => $idSecteur]);
+        $stmt = $this->executePrepare('SELECT * FROM secteurs_structures WHERE ID_SECTEUR=:idSecteur', ['idSecteur' => $idSecteur]);
         $datas = $stmt->fetch();
 
         if (!$datas) return null;
@@ -32,7 +32,7 @@ class SecteursStructuresManager extends PDOManager
 
     public function findByIdStructure(int $idStructure): ?Entity
     {
-        $stmt = $this->executePrepare('SELECT * FROM secteurs_structures WHERE id_structure=:idStructure', ['idStructure' => $idStructure]);
+        $stmt = $this->executePrepare('SELECT * FROM secteurs_structures WHERE ID_STRUCTURE=:idStructure', ['idStructure' => $idStructure]);
         $datas = $stmt->fetch();
 
         if (!$datas) return null;
@@ -59,7 +59,7 @@ class SecteursStructuresManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        $req = 'INSERT INTO secteurs_structures(id, id_secteur,id_structure) VALUES (:id, :id_secteur,:id_structure)';
+        $req = 'INSERT INTO secteurs_structures(ID, ID_SECTEUR, ID_STRUCTURE) VALUES (:id, :id_secteur, :id_structure)';
         $params = ['id' => $e->getId(), 'id_secteur' => $e->getIdSecteur(),'id_structure'=>$e->getIdStructure()];
         $res = $this->executePrepare($req, $params);
 
@@ -68,13 +68,22 @@ class SecteursStructuresManager extends PDOManager
 
     public function update(Entity $e): PDOStatement
     {
-        // TODO: Implement update() method.
+        // Aucune action.
     }
 
     public function delete(Entity $e): PDOStatement
     {
-        $req = 'DELETE FROM secteur_structure WHERE id=:id';
+        $req = 'DELETE FROM secteurs_structures WHERE id=:id';
         $params = array('id' => $e->getId());
+        $res = $this->executePrepare($req, $params);
+
+        return $res;
+    }
+
+    public function deleteByIdStructure(int $id): PDOStatement
+    {
+        $req = 'DELETE FROM secteurs_structures WHERE ID_STRUCTURE=:id_structure';
+        $params = array('id_structure' => $id);
         $res = $this->executePrepare($req, $params);
 
         return $res;

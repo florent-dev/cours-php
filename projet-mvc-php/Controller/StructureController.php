@@ -19,6 +19,7 @@ use mvc\Controller\SController;
 class StructureController extends SController
 {
     private $_secteurManager;
+    private $_secteursStructuresManager;
 
     public function __construct()
     {
@@ -104,6 +105,7 @@ class StructureController extends SController
         $structure = $this->findById($id);
 
         if (null !== $structure) {
+            $this->_secteursStructuresManager->deleteByIdStructure($structure->getId());
             $this->delete($structure);
         }
 
