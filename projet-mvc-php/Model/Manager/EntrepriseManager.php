@@ -45,12 +45,12 @@ class EntrepriseManager extends PDOManager
         return $entrepriseEntities;
     }
 
-    public function insert(Entity $e): PDOStatement
+    public function insert(Entity $e): int
     {
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, null, :nb_actionnaires)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
             'ville' => $e->getVille(), 'estasso' => $e->getEstasso(), 'nb_actionnaires' => $e->getNbActionnaires());
-        $res = $this->executePrepare($req, $params);
+        $res = $this->executePrepareLastId($req, $params);
 
         return $res;
     }

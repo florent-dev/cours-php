@@ -45,12 +45,12 @@ class AssociationManager extends PDOManager
         return $associationEntities;
     }
 
-    public function insert(Entity $e): PDOStatement
+    public function insert(Entity $e): int
     {
         $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs, null)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
             'ville' => $e->getVille(), 'estasso' => $e->getEstasso(), 'nb_donateurs' => $e->getNbDonateurs());
-        $res = $this->executePrepare($req, $params);
+        $res = $this->executePrepareLastId($req, $params);
 
         return $res;
     }

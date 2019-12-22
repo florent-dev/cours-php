@@ -11,7 +11,6 @@ use \PDO;
 
 abstract class SController
 {
-    //protected PDOManager $manager;
     protected $manager;
 
     /**
@@ -56,15 +55,16 @@ abstract class SController
     }
 
     /**
-     * @param Entity $o
+     * @param Entity $e
+     * @return int|null
      */
-    public function insert(Entity $e): void
+    public function insert(Entity $e): ?int
     {
-        $this->getManager()->insert($e);
+        return ($this->getManager()->insert($e));
     }
 
     /**
-     * @param Entity $o
+     * @param Entity $e
      */
     public function update(Entity $e): void
     {
@@ -72,7 +72,7 @@ abstract class SController
     }
 
     /**
-     * @param Entity $o
+     * @param Entity $e
      */
     public function delete(Entity $e): void
     {

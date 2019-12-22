@@ -8,21 +8,21 @@ use mvc\Model\Entities\Entity;
 
 class SecteursStructures extends Entity
 {
-    //Attributs
+    // Attributs
     private $_id;
     private $_idStructure;
     private $_idSecteur;
 
-    //Constructeur
-    public function __construct($id,$idSecteur,$idStructure)
+    // Constructeur
+    public function __construct($id, $idSecteur, $idStructure)
     {
-        $this->_id=$id;
-        $this->_idSecteur=$idSecteur;
-        $this->_idStructure=$idStructure;
+        $this->_id = $id;
+        $this->_idSecteur = $idSecteur;
+        $this->_idStructure = $idStructure;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -30,7 +30,7 @@ class SecteursStructures extends Entity
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      */
     public function setId($id): void
     {
@@ -38,7 +38,7 @@ class SecteursStructures extends Entity
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getIdSecteur()
     {
@@ -46,15 +46,15 @@ class SecteursStructures extends Entity
     }
 
     /**
-     * @param mixed $idSecteur
+     * @param int $idSecteur
      */
-    public function setIdSecteur($idSecteur): void
+    public function setIdSecteur(int $idSecteur): void
     {
         $this->_idSecteur = $idSecteur;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getIdStructure()
     {
@@ -62,9 +62,9 @@ class SecteursStructures extends Entity
     }
 
     /**
-     * @param mixed $idStructure
+     * @param int $idStructure
      */
-    public function setIdStructure($idStructure): void
+    public function setIdStructure(int $idStructure): void
     {
         $this->_idStructure = $idStructure;
     }

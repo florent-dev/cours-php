@@ -41,18 +41,16 @@
                 </div>
             </div>
 
-            <?php if ( is_null($entreprise) ) { ?>
-                <div class="form-group row">
-                    <label for="secteurs" class="col-sm-2 col-form-label">Secteur principal</label>
-                    <div class="col-sm-10">
-                        <select required class="form-control" name="secteurs" id="secteurs">
-                            <?php foreach ($secteurs as $secteur) { ?>
-                                <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
+            <div class="form-group row">
+                <label for="secteurs" class="col-sm-2 col-form-label">Secteur principal</label>
+                <div class="col-sm-10">
+                    <select required multiple class="selectpicker form-control" name="secteurs[]" id="secteurs">
+                        <?php foreach ($secteurs as $secteur) { ?>
+                            <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
-            <?php } ?>
+            </div>
 
             <div class="form-group row">
                 <label for="nb_actionnaires" class="col-sm-2 col-form-label">Nb d'actionnaires</label>

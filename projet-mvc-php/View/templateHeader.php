@@ -10,9 +10,9 @@ if (!isset($title)) {
 <head>
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
-    <meta name="description" content="">
-    <link href="View/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
-    <script src="View/js/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>

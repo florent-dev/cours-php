@@ -6,17 +6,21 @@ require_once('SController.php');
 require_once(__DIR__ . '/../Model/Manager/AssociationManager.php');
 
 use Model\Entity\Association;
+use Model\Entity\SecteursStructures;
 use mvc\Model\Manager\AssociationManager;
 use mvc\Model\Manager\SecteurManager;
+use mvc\Model\Manager\SecteursStructuresManager;
 
 class AssociationController extends SController
 {
     private $_secteurManager;
+    private $_secteursStructuresManager;
 
     public function __construct()
     {
         $this->manager = new AssociationManager();
         $this->_secteurManager = new SecteurManager();
+        $this->_secteursStructuresManager = new SecteursStructuresManager();
     }
 
     public function viewAssociations(): void
@@ -52,9 +56,21 @@ class AssociationController extends SController
 
     public function createAssociation(): void
     {
-        $structure = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], 1, $_POST['nb_donateurs']);
-        $this->insert($structure);
-        header('Location: index.php?action=viewAssociations');
+        $association = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], 1, $_POST['nb_donateurs']);
+
+        if (isset($_POST['secteurs'])) {
+            if (count($_POST['secteurs']) > 0) {
+                $idStructureInserted = $this->insert($association);
+                foreach ($_POST['secteurs'] as $secteurId) {
+                    $secteurStructure = new SecteursStructures(null, $secteurId, $idStructureInserted);
+                    $this->_secteursStructuresManager->insert($secteurStructure);
+                }
+                header('Location: index.php?action=viewAssociations');
+                return;
+            }
+        }
+
+        header('Location: index.php?action=createAssociation');
     }
 
     public function updateAssociation($id): void

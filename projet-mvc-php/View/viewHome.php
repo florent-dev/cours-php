@@ -27,8 +27,11 @@
         <?php } ?>
 
         <p class="mt-3">
+            <a href="index.php?action=viewEntreprises" class="btn btn-info">
+                Gérer les entreprises
+            </a>
             <a href="index.php?action=viewAssociations" class="btn btn-info">
-                Gérer les structures
+                Gérer les associations
             </a>
         </p>
 

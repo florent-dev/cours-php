@@ -150,7 +150,7 @@ abstract class PDOManager
         }
     }
 
-    protected function executePrepareLastId(string $req, array $params)
+    protected function executePrepareLastId(string $req, array $params): int
     {
         $conn = null;
         try {
@@ -168,13 +168,13 @@ abstract class PDOManager
         }
     }
 
-    protected function lastId(){
+    protected function lastId(): int {
         $conn = $this->dbConnect();
         return $conn->lastInsertId();
     }
 
     public abstract function findById(int $id) : ?Entity;
     public abstract function find() : PDOStatement;
-    public abstract function findAll(int $pdoFecthMode) : array;
+    public abstract function findAll(int $pdoFetchMode) : array;
     public abstract function insert(Entity $e);
 }
