@@ -93,4 +93,13 @@ class SecteursStructuresManager extends PDOManager
 
         return $res;
     }
+
+    public function deleteByIdSecteur(int $id): PDOStatement
+    {
+        $req = 'DELETE FROM secteurs_structures WHERE ID_SECTEUR=:id_secteur';
+        $params = array('id_secteur' => $id);
+        $res = $this->executePrepare($req, $params);
+
+        return $res;
+    }
 }

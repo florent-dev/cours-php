@@ -4,16 +4,20 @@ namespace mvc\Controller;
 
 require_once('SController.php');
 require_once(__DIR__ . '/../Model/Manager/SecteurManager.php');
+require_once(__DIR__ . '/../Model/Manager/SecteursStructuresManager.php');
 
 use Model\Entity\Secteur;
 use mvc\Model\Manager\SecteurManager;
+use mvc\Model\Manager\SecteursStructuresManager;
 
 
 class SecteurController extends SController
 {
+
     public function __construct()
     {
         $this->manager = new SecteurManager();
+        $this->_secteursStructuresManager = new SecteursStructuresManager();
     }
 
     public function viewSecteurs(): void
@@ -72,6 +76,7 @@ class SecteurController extends SController
         $secteur = $this->findById($id);
 
         if (null !== $secteur) {
+            $this->_secteursStructuresManager->deleteByIdSecteur($secteur->getId());
             $this->delete($secteur);
         }
 
