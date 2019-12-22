@@ -46,14 +46,15 @@
                 <div class="col-sm-10">
                     <select required multiple class="selectpicker form-control" name="secteurs[]" id="secteurs">
                         <?php foreach ($secteurs as $secteur) { ?>
-                            <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
+                            <?php $selected = (in_array($secteur->getId(), $linkedSecteurs)) ? 'selected' : ''; ?>
+                            <option value="<?= $secteur->getId() ?>" <?= $selected ?>><?= $secteur->getLibelle() ?></option>
                         <?php } ?>
                     </select>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label for="nb_donateurs" class="col-sm-2 col-form-label">Nb de donateurs (si association)</label>
+                <label for="nb_donateurs" class="col-sm-2 col-form-label">Nb de donateurs</label>
                 <div class="col-sm-10">
                     <input required type="number" class="form-control" placeholder="Nombre de donateurs"
                            name="nb_donateurs" id="nb_donateurs" value="0" min="0"

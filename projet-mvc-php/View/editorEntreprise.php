@@ -46,7 +46,8 @@
                 <div class="col-sm-10">
                     <select required multiple class="selectpicker form-control" name="secteurs[]" id="secteurs">
                         <?php foreach ($secteurs as $secteur) { ?>
-                            <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
+                            <?php $selected = (in_array($secteur->getId(), $linkedSecteurs)) ? 'selected' : ''; ?>
+                            <option value="<?= $secteur->getId() ?>" <?= $selected ?>><?= $secteur->getLibelle() ?></option>
                         <?php } ?>
                     </select>
                 </div>

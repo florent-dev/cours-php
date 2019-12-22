@@ -47,6 +47,7 @@ class AssociationController extends SController
             $title = 'Créer l\'association';
             $action .= 'createAssociation';
         } else {
+            $linkedSecteurs = $this->_secteursStructuresManager->getIdSecteursByIdStructure($association->getId());
             $title = 'Modifier l\'association n°' . $association->getId();
             $action .= 'updateAssociation&id=' . $association->getId();
         }
@@ -84,6 +85,13 @@ class AssociationController extends SController
             $association->setVille($_POST['ville']);
             $association->setNbDonateurs($_POST['nb_donateurs']);
             $this->update($association);
+
+            $this->_secteursStructuresManager->deleteByIdStructure($association->getId());
+
+            foreach ($_POST['secteurs'] as $secteurId) {
+                $secteurStructure = new SecteursStructures(null, $secteurId, $association->getId());
+                $this->_secteursStructuresManager->insert($secteurStructure);
+            }
         }
 
         header('Location: index.php?action=viewAssociations');

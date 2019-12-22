@@ -42,12 +42,17 @@ class SecteursStructuresManager extends PDOManager
 
     public function getIdSecteursByIdStructure(int $idStructure): ?array
     {
-        $stmt = $this->executePrepare('SELECT id FROM secteurs_structures WHERE ID_STRUCTURE=:idStructure', ['idStructure' => $idStructure]);
-        $datas = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $stmt = $this->executePrepare('SELECT ID_SECTEUR FROM secteurs_structures WHERE ID_STRUCTURE=:idStructure', ['idStructure' => $idStructure]);
+        $datas = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         if (!$datas) return null;
 
-        return $datas;
+        $secteurIds = [];
+        foreach ($datas as $data) {
+            $secteurIds[] = $data['ID_SECTEUR'];
+        }
+
+        return $secteurIds;
     }
 
     public function find(): PDOStatement
@@ -56,10 +61,10 @@ class SecteursStructuresManager extends PDOManager
         return $stmt;
     }
 
-    public function findAll(int $pdoFecthMode): array
+    public function findAll(int $pdoFetchMode): array
     {
         $stmt = $this->find();
-        $secteursStructures = $stmt->fetchAll($pdoFecthMode);
+        $secteursStructures = $stmt->fetchAll($pdoFetchMode);
         $secteursStructuresEntities = [];
         foreach ($secteursStructures as $secteursStructure) {
             $secteursStructuresEntities[] = new SecteursStructures($secteursStructure['ID'], $secteursStructure['ID_SECTEUR'], $secteursStructure['ID_STRUCTURE']);
@@ -70,7 +75,7 @@ class SecteursStructuresManager extends PDOManager
     public function insert(Entity $e): PDOStatement
     {
         $req = 'INSERT INTO secteurs_structures(ID, ID_SECTEUR, ID_STRUCTURE) VALUES (:id, :id_secteur, :id_structure)';
-        $params = ['id' => $e->getId(), 'id_secteur' => $e->getIdSecteur(),'id_structure'=>$e->getIdStructure()];
+        $params = ['id' => $e->getId(), 'id_secteur' => $e->getIdSecteur(), 'id_structure' => $e->getIdStructure()];
         $res = $this->executePrepare($req, $params);
 
         return $res;

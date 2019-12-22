@@ -51,7 +51,6 @@ class EntrepriseController extends SController
             $action .= 'createEntreprise';
         } else {
             $linkedSecteurs = $this->_secteursStructuresManager->getIdSecteursByIdStructure($entreprise->getId());
-            var_dump($linkedSecteurs); die();
             $title = 'Modifier l\'entreprise n°' . $entreprise->getId();
             $action .= 'updateEntreprise&id=' . $entreprise->getId();
         }
@@ -89,6 +88,13 @@ class EntrepriseController extends SController
             $entreprise->setVille($_POST['ville']);
             $entreprise->setNbActionnaires($_POST['nb_actionnaires']);
             $this->update($entreprise);
+
+            $this->_secteursStructuresManager->deleteByIdStructure($entreprise->getId());
+
+            foreach ($_POST['secteurs'] as $secteurId) {
+                $secteurStructure = new SecteursStructures(null, $secteurId, $entreprise->getId());
+                $this->_secteursStructuresManager->insert($secteurStructure);
+            }
         }
 
         header('Location: index.php?action=viewEntreprises');
