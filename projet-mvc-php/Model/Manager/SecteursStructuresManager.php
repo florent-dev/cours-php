@@ -66,11 +66,6 @@ class SecteursStructuresManager extends PDOManager
         return $res;
     }
 
-    public function update(Entity $e): PDOStatement
-    {
-        // Aucune action.
-    }
-
     public function delete(Entity $e): PDOStatement
     {
         $req = 'DELETE FROM secteurs_structures WHERE id=:id';

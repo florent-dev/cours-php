@@ -30,10 +30,10 @@ class StructureManager extends PDOManager
         return $stmt;
     }
 
-    public function findAll(int $pdoFecthMode): array
+    public function findAll(int $pdoFetchMode): array
     {
         $stmt = $this->find();
-        $datasStructures = $stmt->fetchAll($pdoFecthMode);
+        $datasStructures = $stmt->fetchAll($pdoFetchMode);
 
         $structuresEntities = [];
         foreach($datasStructures as $datasStructure) {

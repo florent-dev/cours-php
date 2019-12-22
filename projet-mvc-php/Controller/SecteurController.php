@@ -32,7 +32,7 @@ class SecteurController extends SController
         require(__DIR__ . '/../View/viewSecteur.php');
     }
 
-    public function editorStructure($id): void
+    public function editorSecteur($id): void
     {
         $secteur = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';

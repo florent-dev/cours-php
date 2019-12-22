@@ -7,49 +7,52 @@ require_once(__DIR__ . '/../Model/Manager/AssociationManager.php');
 
 use Model\Entity\Association;
 use mvc\Model\Manager\AssociationManager;
+use mvc\Model\Manager\SecteurManager;
 
 class AssociationController extends SController
 {
+    private $_secteurManager;
+
     public function __construct()
     {
         $this->manager = new AssociationManager();
+        $this->_secteurManager = new SecteurManager();
     }
 
     public function viewAssociations(): void
     {
-        $structures = $this->findAll();
-        $terminologie = ['singulier' => 'association', 'pluriel' => 'associations'];
+        $associations = $this->findAll();
 
-        require(__DIR__ . '/../View/viewStructures.php');
+        require(__DIR__ . '/../View/viewAssociations.php');
     }
 
     public function viewAssociation($id): void
     {
         $structure = $this->findById($id);
 
-        require(__DIR__ . '/../View/viewStructure.php');
+        require(__DIR__ . '/../View/viewAssociation.php');
     }
 
     public function editorAssociation($id): void
     {
-
-        $structure = (null !== $id) ? $this->findById($id) : null;
+        $secteurs = $this->_secteurManager->findAll(\PDO::FETCH_ASSOC);
+        $association = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 
-        if (null === $structure) {
+        if (null === $association) {
             $title = 'Créer l\'association';
             $action .= 'createAssociation';
         } else {
-            $title = 'Modifier l\'association n°' . $structure->getId();
-            $action .= 'updateAssociation&id=' . $structure->getId();
+            $title = 'Modifier l\'association n°' . $association->getId();
+            $action .= 'updateAssociation&id=' . $association->getId();
         }
 
-        require(__DIR__ . '/../View/editorStructure.php');
+        require(__DIR__ . '/../View/editorAssociation.php');
     }
 
     public function createAssociation(): void
     {
-        $structure = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_donateurs']);
+        $structure = new Association(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], 1, $_POST['nb_donateurs']);
         $this->insert($structure);
         header('Location: index.php?action=viewAssociations');
     }
@@ -59,19 +62,12 @@ class AssociationController extends SController
         $association = $this->findById($id);
 
         if (null !== $association) {
-            $association->setLibelle($_POST['libelle']);
+            $association->setNom($_POST['nom']);
+            $association->setRue($_POST['rue']);
+            $association->setCp($_POST['cp']);
+            $association->setVille($_POST['ville']);
+            $association->setNbDonateurs($_POST['nb_donateurs']);
             $this->update($association);
-        }
-
-        header('Location: index.php?action=viewAssociations');
-    }
-
-    public function deleteAssociation($id): void
-    {
-        $association = $this->findById($id);
-
-        if (null !== $association) {
-            $this->delete($association);
         }
 
         header('Location: index.php?action=viewAssociations');

@@ -12,10 +12,16 @@
     <?php } ?>
 
     <a href='index.php?action=editorSecteur'>
-        <button type="button" class="btn btn-success btn-sm mt-2">+</button>
+        <button type="button" class="btn btn-success btn-sm mt-2">+ Secteur</button>
     </a>
 
     <hr class="mb-5">
+
+    <p class="mt-4">
+        <a href="index.php" class="btn btn-info">
+            Retour sur l'accueil
+        </a>
+    </p>
 
 </div>
 

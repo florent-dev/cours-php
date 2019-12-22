@@ -13,45 +13,48 @@ use mvc\Model\Manager\SecteurManager;
 
 class EntrepriseController extends SController
 {
+    private $_secteurManager;
+
     public function __construct()
     {
         $this->manager = new EntrepriseManager();
+        $this->_secteurManager = new SecteurManager();
     }
 
     public function viewEntreprises(): void
     {
-        $structures = $this->findAll();
-        $terminologie = ['singulier' => 'entreprise', 'pluriel' => 'entreprises'];
+        $entreprises = $this->findAll();
 
-        require(__DIR__ . '/../View/viewStructures.php');
+        require(__DIR__ . '/../View/viewEntreprises.php');
     }
 
     public function viewEntreprise($id): void
     {
-        $structure = $this->findById($id);
+        $entreprise = $this->findById($id);
 
-        require(__DIR__ . '/../View/viewStructure.php');
+        require(__DIR__ . '/../View/viewEntreprise.php');
     }
 
     public function editorEntreprise($id): void
     {
-        $structure = (null !== $id) ? $this->findById($id) : null;
+        $secteurs = $this->_secteurManager->findAll(\PDO::FETCH_ASSOC);
+        $entreprise = (null !== $id) ? $this->findById($id) : null;
         $action = 'index.php?action=';
 
-        if (null === $structure) {
+        if (null === $entreprise) {
             $title = 'Créer l\'entreprise';
             $action .= 'createEntreprise';
         } else {
-            $title = 'Modifier l\'entreprise n°' . $structure->getId();
-            $action .= 'updateEntreprise&id=' . $structure->getId();
+            $title = 'Modifier l\'entreprise n°' . $entreprise->getId();
+            $action .= 'updateEntreprise&id=' . $entreprise->getId();
         }
 
-        require(__DIR__ . '/../View/editorStructure.php');
+        require(__DIR__ . '/../View/editorEntreprise.php');
     }
 
     public function createEntreprise(): void
     {
-        $entreprise = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], $_POST['estasso'], $_POST['nb_actionnaires']);
+        $entreprise = new Entreprise(null, $_POST['nom'], $_POST['rue'], $_POST['cp'], $_POST['ville'], 0, $_POST['nb_actionnaires']);
         $this->insert($entreprise);
         header('Location: index.php?action=viewEntreprises');
     }
@@ -61,19 +64,12 @@ class EntrepriseController extends SController
         $entreprise = $this->findById($id);
 
         if (null !== $entreprise) {
-            $entreprise->setLibelle($_POST['libelle']);
+            $entreprise->setNom($_POST['nom']);
+            $entreprise->setRue($_POST['rue']);
+            $entreprise->setCp($_POST['cp']);
+            $entreprise->setVille($_POST['ville']);
+            $entreprise->setNbActionnaires($_POST['nb_actionnaires']);
             $this->update($entreprise);
-        }
-
-        header('Location: index.php?action=viewEntreprises');
-    }
-
-    public function deleteEntreprise($id): void
-    {
-        $entreprise = $this->findById($id);
-
-        if (null !== $entreprise) {
-            $this->delete($entreprise);
         }
 
         header('Location: index.php?action=viewEntreprises');

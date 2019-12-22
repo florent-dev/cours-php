@@ -34,4 +34,12 @@ class Association extends Structure
     {
         return $this->nbDonateurs;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Association';
+    }
 }

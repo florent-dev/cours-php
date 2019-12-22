@@ -16,7 +16,7 @@ abstract class Structure extends Entity
     private $_ville;
     private $_estasso;
 
-    public function __construct($id, $nom, $rue, $cp, $ville, $estAssocie)
+    protected function __construct($id, $nom, $rue, $cp, $ville, $estAssocie)
     {
         $this->_id = $id;
         $this->_nom = $nom;
@@ -120,6 +120,14 @@ abstract class Structure extends Entity
     public function setCp($cp)
     {
         $this->_cp = $cp;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Structure';
     }
 
 }

@@ -4,13 +4,11 @@
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Gestion des structures</h1>
+                <h1 class="display-4"><?= $title ?></h1>
             </div>
         </div>
 
         <form method="post" action="<?= $action ?>" class="mt-5 mb-5">
-            <h2><?= $title ?></h2>
-
             <div class="form-group row">
                 <label for="nom" class="col-sm-2 col-form-label">Nom</label>
                 <div class="col-sm-10">
@@ -44,24 +42,24 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="secteurs" class="col-sm-2 col-form-label">Secteur principal</label>
-                <div class="col-sm-10">
-                    <select required class="form-control" name="secteurs" id="secteurs">
-                        <?php foreach ($secteurs as $secteur) { ?>
-                            <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
             <?php if ( is_null($structure) ) { ?>
+                <div class="form-group row">
+                    <label for="secteurs" class="col-sm-2 col-form-label">Secteur principal</label>
+                    <div class="col-sm-10">
+                        <select required class="form-control" name="secteurs" id="secteurs">
+                            <?php foreach ($secteurs as $secteur) { ?>
+                                <option value="<?= $secteur->getId() ?>"><?= $secteur->getLibelle() ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label for="estasso" class="col-sm-2 col-form-label">Association ?</label>
                     <div class="col-sm-10">
-                        <input type="radio" name="estasso" id="estasso_oui" value="1"/>
+                        <input type="radio" name="estasso" id="estasso_oui" value="1" <?php if(!is_null($structure) && $structure->getEstasso()) echo '"selected"'; ?>/>
                         <label for="estasso_oui">Oui</label>
-                        <input type="radio" name="estasso" id="estasso_non" value="0" checked/>
+                        <input type="radio" name="estasso" id="estasso_non" value="0" <?php if(is_null($structure)) echo '"checked"'; ?>/>
                         <label for="estasso_non">Non</label>
                     </div>
                 </div>
@@ -93,7 +91,7 @@
                 <input type="hidden" name="id" id="id" value="<?= $structure->getId() ?>">
             <?php } ?>
 
-            <input type="submit" class="btn btn-primary mb-2" name="add" value="Ajouter la structure">
+            <input type="submit" class="btn btn-primary mb-2" name="add" value="Valider le formulaire">
         </form>
     </div>
 

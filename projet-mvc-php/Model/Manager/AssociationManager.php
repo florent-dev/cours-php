@@ -47,7 +47,7 @@ class AssociationManager extends PDOManager
 
     public function insert(Entity $e): PDOStatement
     {
-        $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, null) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs)';
+        $req = 'INSERT INTO structure(id, nom, rue, cp, ville, estasso, nb_donateurs, nb_actionnaires) VALUES (:id, :nom, :rue, :cp, :ville, :estasso, :nb_donateurs, null)';
         $params = array('id' => $e->getId(), 'nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(),
             'ville' => $e->getVille(), 'estasso' => $e->getEstasso(), 'nb_donateurs' => $e->getNbDonateurs());
         $res = $this->executePrepare($req, $params);
@@ -60,15 +60,6 @@ class AssociationManager extends PDOManager
         $req = 'UPDATE structure SET nom=:nom, rue=:rue, cp=:cp, ville=:ville, nb_donateurs=:nb_donateurs WHERE id=:id';
         $params = array('nom' => $e->getNom(), 'rue' => $e->getRue(), 'cp' => $e->getCp(), 'ville' => $e->getVille(),
             'nb_donateurs' => $e->getNbDonateurs(),'id' => $e->getId());
-        $res = $this->executePrepare($req, $params);
-
-        return $res;
-    }
-
-    public function delete(Entity $e): PDOStatement
-    {
-        $req = 'DELETE FROM structure WHERE id=:id';
-        $params = array('id' => $e->getId());
         $res = $this->executePrepare($req, $params);
 
         return $res;

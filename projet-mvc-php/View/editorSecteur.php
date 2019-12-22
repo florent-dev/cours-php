@@ -4,17 +4,16 @@
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Éditeur de secteur</h1>
+                <h1 class="display-4"><?= $title ?></h1>
             </div>
         </div>
 
         <form method="post" action="<?= $action ?>" class="mt-5 mb-5">
-            <h2><?= $title ?></h2>
-
             <div class="form-group row">
                 <label for="libelle" class="col-sm-2 col-form-label">Nom du secteur</label>
                 <div class="col-sm-10">
-                    <input required type="text" name="libelle" id="libelle" value="<?php if(null !== $secteur) echo $secteur->getLibelle(); ?>" />
+                    <input required type="text" class="form-control" name="libelle" id="libelle" placeholder="Nom du secteur"
+                           value="<?php if(null !== $secteur) echo $secteur->getLibelle(); ?>" />
                     <input type="hidden" name="id" id="id" value="<?php if(null !== $secteur) echo $secteur->getId(); ?>">
                 </div>
             </div>

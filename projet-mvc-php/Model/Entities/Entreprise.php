@@ -34,4 +34,12 @@ class Entreprise extends Structure
     {
         return $this->nbActionnaires;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Entreprise';
+    }
 }

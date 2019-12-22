@@ -12,7 +12,6 @@ if (!isset($title)) {
     <title><?php echo $title; ?></title>
     <meta name="description" content="">
     <link href="View/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
-    <script src="View/js/bootstrap-grid.js"></script>
     <script src="View/js/jquery-3.4.1.min.js"></script>
 </head>
 
@@ -28,9 +27,6 @@ if (!isset($title)) {
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=viewSecteurs">Secteurs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="index.php?action=viewStructures">Toutes les structures</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="index.php?action=viewEntreprises">Entreprises</a>
