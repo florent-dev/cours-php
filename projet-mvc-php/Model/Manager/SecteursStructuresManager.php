@@ -40,6 +40,16 @@ class SecteursStructuresManager extends PDOManager
         return $this->buildStructure($datas);
     }
 
+    public function getIdSecteursByIdStructure(int $idStructure): ?array
+    {
+        $stmt = $this->executePrepare('SELECT id FROM secteurs_structures WHERE ID_STRUCTURE=:idStructure', ['idStructure' => $idStructure]);
+        $datas = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$datas) return null;
+
+        return $datas;
+    }
+
     public function find(): PDOStatement
     {
         $stmt = $this->executePrepare('SELECT * FROM secteurs_structures', []);

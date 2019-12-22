@@ -50,6 +50,8 @@ class EntrepriseController extends SController
             $title = 'Créer l\'entreprise';
             $action .= 'createEntreprise';
         } else {
+            $linkedSecteurs = $this->_secteursStructuresManager->getIdSecteursByIdStructure($entreprise->getId());
+            var_dump($linkedSecteurs); die();
             $title = 'Modifier l\'entreprise n°' . $entreprise->getId();
             $action .= 'updateEntreprise&id=' . $entreprise->getId();
         }

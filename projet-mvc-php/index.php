@@ -77,6 +77,13 @@ try {
                         $error = 'Erreur de paramètres';
                     }
                     break;
+                case 'deleteSecteur':
+                    if (isset($_GET['id'])) {
+                        $controller->deleteSecteur($_GET['id']);
+                    } else {
+                        $error = 'Erreur de paramètres';
+                    }
+                    break;
                 default :
                     $error = 'Erreur : action non reconnue';
                     break;
